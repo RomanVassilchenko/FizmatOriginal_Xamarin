@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FizmatOriginal.Views.SchedulePage">
+    <ContentPage.Content>
+        <Grid>
+            <ActivityIndicator VerticalOptions="Center" HorizontalOptions="Center" x:Name="activity_indicator" Color="#4D7EE1" />
+            <!-- ListView-->
+            <ListView x:Name="myList" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!-- Here we make a Horizontal orientation with the help of StackLayout-->
+                            <StackLayout Orientation="Horizontal" Margin="5" HeightRequest="90">
+                                <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+                                    <Label Text="{Binding classnumber}" FontAttributes="Bold"/>
+                                    <Label Text="{Binding number}"/>
+                                </StackLayout>
+                                <StackLayout VerticalOptions="Center">
+                                    <Label Text="{Binding subject}" FontAttributes="Bold"/>
+                                    <Label Text="{Binding classroom}"/>
+                                </StackLayout>
+                                <Image HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="20" Source="more_icon.png" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
