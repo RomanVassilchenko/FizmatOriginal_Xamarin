@@ -19,6 +19,12 @@ namespace FizmatOriginal.Views
         public short Counter = 0;
         public int SlidePosition = 0;
         int heightRowsList = 90;
+        String OldLanguage = "RU";
+        ObservableCollection<Subject> trends = new ObservableCollection<Subject>();
+
+        public string classnumChanged = "10D", LanguageChanged = "RU";
+        public int numChanged = 1;
+
         private string Url = "https://script.google.com/macros/s/AKfycby3InMdcI8rP1AC9JvGfZYfYlYEMIqmHV-ZGXTUDQV7PTz27_c/exec";
 
         private HttpClient _client = new HttpClient();
@@ -26,9 +32,10 @@ namespace FizmatOriginal.Views
         public SchedulePage()
         {
             InitializeComponent();
-            OnGetList("5A", 1, "KZ");
+            NavigationPage.SetHasNavigationBar(this, false);
+            OnGetList(LanguageChanged);
         }
-        protected async void OnGetList(string classnum, int num, string Language)
+        protected async void OnGetList(string Language)
         {
             if (Language.ToUpper() == "RU") Url = "https://script.google.com/macros/s/AKfycby3InMdcI8rP1AC9JvGfZYfYlYEMIqmHV-ZGXTUDQV7PTz27_c/exec";
             if (Language.ToUpper() == "KZ") Url = "https://script.google.com/macros/s/AKfycbxYd2luv9dXqr8DUAMiuAHvfuJ_JBJ3V9Df4aBWMWrfcXQORW8/exec";
@@ -44,29 +51,9 @@ namespace FizmatOriginal.Views
 
                     var tr = JsonConvert.DeserializeObject<List<Subject>>(content);
 
-                    ObservableCollection<Subject> trends = new ObservableCollection<Subject>(tr);
+                    trends = new ObservableCollection<Subject>(tr);
 
-                    List<Subject> json = new List<Subject>(trends);
-                    List<Subject> weekclassjson = new List<Subject>();
-                    foreach (Subject s in json)
-                    {
-                        if (s.classnumber == classnum)
-                        {
-                            if (s.weeknum == num.ToString())
-                            {
-                                weekclassjson.Add(new Subject
-                                {
-                                    classnumber = s.classnumber,
-                                    number = s.number,
-                                    classroom = s.classroom,
-                                    subject = s.subject,
-                                    weeknum = s.weeknum
-                                });
-                            }
-                        }
-                    }
-
-                    myList.ItemsSource = weekclassjson;
+                    ChoseClassAndDay(classnumChanged, numChanged, LanguageChanged);
 
                     int i = trends.Count;
                     if (i > 0)
@@ -78,7 +65,6 @@ namespace FizmatOriginal.Views
                     i = (trends.Count * heightRowsList);
                     activity_indicator.HeightRequest = i;
 
-
                 }
                 catch (Exception ey)
                 {
@@ -87,6 +73,75 @@ namespace FizmatOriginal.Views
 
             }
 
+        }
+
+        private void ChoseClassAndDay(string classnum, int num, string Language)
+        {
+            List<Subject> json = new List<Subject>(trends);
+            List<Subject> weekclassjson = new List<Subject>();
+            foreach (Subject s in json)
+            {
+                if (s.classnumber == classnum)
+                {
+                    if (s.weeknum == num.ToString())
+                    {
+                        if (s.subject != "")
+                        {
+                            weekclassjson.Add(new Subject
+                            {
+                                classnumber = s.classnumber,
+                                number = s.number,
+                                classroom = s.classroom,
+                                subject = s.subject,
+                                weeknum = s.weeknum,
+                                times = s.times
+                            });
+                        }
+                    }
+                }
+            }
+
+            myList.ItemsSource = weekclassjson;
+
+        }
+
+
+        private void Pickerclassnum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            classnumChanged = pickerclassnum.Items[pickerclassnum.SelectedIndex] + pickerclassletter.Items[pickerclassletter.SelectedIndex];
+            LanguageChanged = LanguageCheck(pickerclassletter.Items[pickerclassletter.SelectedIndex]);
+            numChanged = WeekCheck(pickerdayofweek.Items[pickerdayofweek.SelectedIndex]);
+            if(LanguageChanged != OldLanguage)
+            {
+                OldLanguage = LanguageChanged;
+                OnGetList(LanguageChanged);
+            }
+            else ChoseClassAndDay(classnumChanged, numChanged, LanguageChanged);
+        }
+
+        private void Pickerclassletter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Pickerdayofweek_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private string LanguageCheck(string letter)
+        {
+            if (letter == "A" || letter == "B") return "KZ";
+            else return "RU";
+        }
+        private int WeekCheck(string day)
+        {
+            if (day == "Понедельник") return 1;
+            else if (day == "Вторник") return 2;
+            else if (day == "Среда") return 3;
+            else if (day == "Четверг") return 4;
+            else if (day == "Пятница") return 5;
+            else if (day == "Суббота") return 6;
+            else return 1;
         }
     }
 }

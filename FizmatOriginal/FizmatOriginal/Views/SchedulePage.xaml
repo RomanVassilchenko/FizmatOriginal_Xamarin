@@ -5,30 +5,80 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="FizmatOriginal.Views.SchedulePage">
+    
     <ContentPage.Content>
         <Grid>
-            <ActivityIndicator VerticalOptions="Center" HorizontalOptions="Center" x:Name="activity_indicator" Color="#4D7EE1" />
-            <!-- ListView-->
-            <ListView x:Name="myList" HasUnevenRows="true">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <!-- Here we make a Horizontal orientation with the help of StackLayout-->
-                            <StackLayout Orientation="Horizontal" Margin="5" HeightRequest="90">
-                                <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
-                                    <Label Text="{Binding classnumber}" FontAttributes="Bold"/>
-                                    <Label Text="{Binding number}"/>
-                                </StackLayout>
-                                <StackLayout VerticalOptions="Center">
-                                    <Label Text="{Binding subject}" FontAttributes="Bold"/>
-                                    <Label Text="{Binding classroom}"/>
-                                </StackLayout>
-                                <Image HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="20" Source="more_icon.png" />
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="AUTO"/>
+                    <ColumnDefinition Width="AUTO"/>
+                    <ColumnDefinition Width="AUTO"/>
+                </Grid.ColumnDefinitions>
+                <Picker Grid.Column="0" x:Name="pickerclassnum" SelectedIndexChanged="Pickerclassnum_SelectedIndexChanged" Title="10">
+                    <Picker.Items>
+                        <x:String>5</x:String>
+                        <x:String>6</x:String>
+                        <x:String>7</x:String>
+                        <x:String>8</x:String>
+                        <x:String>9</x:String>
+                        <x:String>10</x:String>
+                        <x:String>11</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Picker Grid.Column="1" Title="D" x:Name="pickerclassletter" SelectedIndexChanged="Pickerclassletter_SelectedIndexChanged">
+                    <Picker.Items>
+                        <x:String>A</x:String>
+                        <x:String>B</x:String>
+                        <x:String>D</x:String>
+                        <x:String>E</x:String>
+                        <x:String>F</x:String>
+                        <x:String>X</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Picker Grid.Column="2" Title="Понедельник" x:Name="pickerdayofweek" SelectedIndexChanged="Pickerdayofweek_SelectedIndexChanged">
+                    <Picker.Items>
+                        <x:String>Понедельник</x:String>
+                        <x:String>Вторник</x:String>
+                        <x:String>Среда</x:String>
+                        <x:String>Четверг</x:String>
+                        <x:String>Пятница</x:String>
+                        <x:String>Суббота</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Grid>
+            <Grid Grid.Row="1">
+                <ActivityIndicator VerticalOptions="Center" HorizontalOptions="Center" x:Name="activity_indicator" Color="#4D7EE1" />
+                <!-- ListView-->
+                <ListView x:Name="myList" HasUnevenRows="true">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Margin="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="AUTO"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical" Grid.Column="0">
+                                        <Label Text="{Binding number}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                                        <Label Text="{Binding times}" HorizontalOptions="Center"></Label>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+                                        <Label Text="{Binding subject}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                                        <Label Text="{Binding classroom}" HorizontalOptions="Center"></Label>
+                                    </StackLayout>
+                                </Grid>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

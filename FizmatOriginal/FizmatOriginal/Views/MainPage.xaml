@@ -15,7 +15,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:ItemsPage />
+                <views:SchedulePage />
             </x:Arguments>
         </NavigationPage>
         
@@ -37,7 +37,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:SchedulePage />
+                <views:ItemsPage />
             </x:Arguments>
         </NavigationPage>
 

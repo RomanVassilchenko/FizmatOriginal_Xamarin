@@ -7,5 +7,6 @@
         public string subject { get; set; }
         public string classroom { get; set; }
         public string weeknum { get; set; }
+        public string times { get; set; }
     }
 }
