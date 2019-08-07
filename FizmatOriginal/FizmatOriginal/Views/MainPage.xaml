@@ -11,7 +11,8 @@
         <NavigationPage Title="Расписание">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_feed.png"/>
+                    <On Platform="iOS" Value="tab_schedule.png"/>
+                    <On Platform="Android" Value="tab_schedule.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
@@ -22,7 +23,8 @@
         <NavigationPage Title="Новости">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_about.png"/>
+                    <On Platform="iOS" Value="tab_news.png"/>
+                    <On Platform="Android" Value="tab_news.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
@@ -33,7 +35,8 @@
         <NavigationPage Title="Помощь">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_about.png"/>
+                    <On Platform="iOS" Value="tab_help.png"/>
+                    <On Platform="Android" Value="tab_help.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
