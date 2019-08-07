@@ -17,8 +17,9 @@
                     <ColumnDefinition Width="AUTO"/>
                     <ColumnDefinition Width="AUTO"/>
                     <ColumnDefinition Width="AUTO"/>
+                    <ColumnDefinition Width="AUTO"/>
                 </Grid.ColumnDefinitions>
-                <Picker Grid.Column="0" x:Name="pickerclassnum" SelectedIndexChanged="Pickerclassnum_SelectedIndexChanged" Title="10">
+                <Picker  Grid.Column="0" x:Name="pickerclassnum" SelectedIndexChanged="Pickerclassnum_SelectedIndexChanged" Title="Параллель">
                     <Picker.Items>
                         <x:String>5</x:String>
                         <x:String>6</x:String>
@@ -30,7 +31,7 @@
                     </Picker.Items>
                 </Picker>
 
-                <Picker Grid.Column="1" Title="D" x:Name="pickerclassletter" SelectedIndexChanged="Pickerclassletter_SelectedIndexChanged">
+                <Picker Grid.Column="1" Title="Класс" x:Name="pickerclassletter" SelectedIndexChanged="Pickerclassletter_SelectedIndexChanged">
                     <Picker.Items>
                         <x:String>A</x:String>
                         <x:String>B</x:String>
@@ -41,7 +42,7 @@
                     </Picker.Items>
                 </Picker>
 
-                <Picker Grid.Column="2" Title="Понедельник" x:Name="pickerdayofweek" SelectedIndexChanged="Pickerdayofweek_SelectedIndexChanged">
+                <Picker Grid.Column="2" Title="День недели" x:Name="pickerdayofweek" SelectedIndexChanged="Pickerdayofweek_SelectedIndexChanged">
                     <Picker.Items>
                         <x:String>Понедельник</x:String>
                         <x:String>Вторник</x:String>
@@ -51,6 +52,8 @@
                         <x:String>Суббота</x:String>
                     </Picker.Items>
                 </Picker>
+
+                <Button Visual="Material" Grid.Column="3" Text="Показать" Clicked="ButtonShowClass_Clicked"/>
             </Grid>
             <Grid Grid.Row="1">
                 <ActivityIndicator VerticalOptions="Center" HorizontalOptions="Center" x:Name="activity_indicator" Color="#4D7EE1" />

@@ -41,40 +41,27 @@ namespace FizmatOriginal.Views
             if (Language.ToUpper() == "KZ") Url = "https://script.google.com/macros/s/AKfycbxYd2luv9dXqr8DUAMiuAHvfuJ_JBJ3V9Df4aBWMWrfcXQORW8/exec";
             if (CrossConnectivity.Current.IsConnected)
             {
-
                 try
                 {
-
                     activity_indicator.IsRunning = true;
-
                     var content = await _client.GetStringAsync(Url);
-
                     var tr = JsonConvert.DeserializeObject<List<Subject>>(content);
-
                     trends = new ObservableCollection<Subject>(tr);
-
                     ChoseClassAndDay(classnumChanged, numChanged, LanguageChanged);
-
                     int i = trends.Count;
                     if (i > 0)
                     {
-
                         activity_indicator.IsRunning = false;
                     }
-
                     i = (trends.Count * heightRowsList);
                     activity_indicator.HeightRequest = i;
-
                 }
                 catch (Exception ey)
                 {
                     Debug.WriteLine("" + ey);
                 }
-
             }
-
         }
-
         private void ChoseClassAndDay(string classnum, int num, string Language)
         {
             List<Subject> json = new List<Subject>(trends);
@@ -100,32 +87,28 @@ namespace FizmatOriginal.Views
                     }
                 }
             }
-
             myList.ItemsSource = weekclassjson;
-
         }
 
 
         private void Pickerclassnum_SelectedIndexChanged(object sender, EventArgs e)
         {
-            classnumChanged = pickerclassnum.Items[pickerclassnum.SelectedIndex] + pickerclassletter.Items[pickerclassletter.SelectedIndex];
-            LanguageChanged = LanguageCheck(pickerclassletter.Items[pickerclassletter.SelectedIndex]);
-            numChanged = WeekCheck(pickerdayofweek.Items[pickerdayofweek.SelectedIndex]);
-            if(LanguageChanged != OldLanguage)
-            {
-                OldLanguage = LanguageChanged;
-                OnGetList(LanguageChanged);
-            }
-            else ChoseClassAndDay(classnumChanged, numChanged, LanguageChanged);
+            string classnumb = pickerclassnum.Items[pickerclassnum.SelectedIndex];
+            if (classnumChanged.Length == 2) classnumChanged = classnumb + classnumChanged[1];
+            else if (classnumChanged.Length == 3) classnumChanged = classnumb + classnumChanged[2];
         }
 
         private void Pickerclassletter_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            string classletter = pickerclassletter.Items[pickerclassletter.SelectedIndex];
+            if (classnumChanged.Length == 2) classnumChanged = classnumChanged[0] + classletter;
+            if (classnumChanged.Length == 3) classnumChanged = classnumChanged[0] + classnumChanged[1] + classletter;
+            LanguageChanged = LanguageCheck(classletter);
         }
 
         private void Pickerdayofweek_SelectedIndexChanged(object sender, EventArgs e)
         {
+            numChanged = WeekCheck(pickerdayofweek.Items[pickerdayofweek.SelectedIndex]);
         }
 
         private string LanguageCheck(string letter)
@@ -133,6 +116,17 @@ namespace FizmatOriginal.Views
             if (letter == "A" || letter == "B") return "KZ";
             else return "RU";
         }
+
+        private void ButtonShowClass_Clicked(object sender, EventArgs e)
+        {
+            if (LanguageChanged != OldLanguage)
+            {
+                OldLanguage = LanguageChanged;
+                OnGetList(LanguageChanged);
+            }
+            else ChoseClassAndDay(classnumChanged, numChanged, LanguageChanged);
+        }
+
         private int WeekCheck(string day)
         {
             if (day == "Понедельник") return 1;
