@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizmatOriginal.Android", "F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizmatOriginal.iOS", "FizmatOriginal\FizmatOriginal.iOS\FizmatOriginal.iOS.csproj", "{6B7E9671-6E0C-407E-9EB4-9C631FEA51CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizmatOriginal", "FizmatOriginal\FizmatOriginal\FizmatOriginal.csproj", "{B8CF64FF-5A05-4C84-8876-BDFFDB03095E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FizmatOriginal", "FizmatOriginal\FizmatOriginal\FizmatOriginal.csproj", "{B8CF64FF-5A05-4C84-8876-BDFFDB03095E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
