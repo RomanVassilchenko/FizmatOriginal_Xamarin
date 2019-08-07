@@ -28,7 +28,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:AboutPage />
+                <views:NewsPage />
             </x:Arguments>
         </NavigationPage>
 
