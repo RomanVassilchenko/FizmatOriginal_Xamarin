@@ -19,6 +19,7 @@ namespace FizmatOriginal.Views
             try
             {
                 activity_indicator_Web.IsRunning = true;
+                //TODO Change source to help web
                 webViewHelp.Source = "https://astana.fizmat.kz/";
             }
             catch
