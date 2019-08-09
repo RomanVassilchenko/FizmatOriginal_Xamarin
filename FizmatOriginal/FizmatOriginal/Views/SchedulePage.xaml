@@ -68,12 +68,12 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical" Grid.Column="0">
-                                        <Label Text="{Binding number}" FontSize="Default" FontAttributes="Bold" HorizontalOptions="Center"></Label>
-                                        <Label Text="{Binding times}" HorizontalOptions="Center"></Label>
+                                        <Label TextColor="##002E56" Text="{Binding number}" FontSize="Default" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                                        <Label TextColor="##002E56" Text="{Binding times}" HorizontalOptions="Center"></Label>
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
-                                        <Label Text="{Binding subject}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"></Label>
-                                        <Label Text="{Binding classroom}" HorizontalOptions="Center"></Label>
+                                        <Label TextColor="##002E56" Text="{Binding subject}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                                        <Label TextColor="##002E56" Text="{Binding classroom}" HorizontalOptions="Center"></Label>
                                     </StackLayout>
                                 </Grid>
 
