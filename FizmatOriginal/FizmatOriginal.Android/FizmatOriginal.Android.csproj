@@ -53,6 +53,8 @@
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidLinkTool>proguard</AndroidLinkTool>
     <AndroidLinkMode>Full</AndroidLinkMode>
+    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
+    <AndroidSupportedAbis>armeabi-v7a;arm64-v8a</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
