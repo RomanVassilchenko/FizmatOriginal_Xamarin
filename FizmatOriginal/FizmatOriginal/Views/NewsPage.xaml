@@ -6,6 +6,34 @@
              mc:Ignorable="d"
              x:Class="FizmatOriginal.Views.NewsPage">
     <ContentPage.Content>
-        <WebView Source="https://astana.fizmat.kz/"/>
+        <Grid>
+            <ActivityIndicator VerticalOptions="Center" HorizontalOptions="Center" x:Name="activity_indicator" Color="#4D7EE1" />
+            <!-- ListView-->
+            <ListView x:Name="myList" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Label x:Name="UrlText" Text="{Binding url}" IsVisible="False" />
+                                <Grid Margin="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="AUTO"/>
+                                        <ColumnDefinition Width="AUTO"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding image}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" WidthRequest="100"/>
+                                    <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+                                        <StackLayout>
+                                            <Label Text="{Binding title}" FontAttributes="Bold" MaxLines="1"/>
+                                            <Label Text="{Binding date}" FontAttributes="Italic"/>
+                                        </StackLayout>
+                                        <Label Text="{Binding description}" MaxLines="3"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
