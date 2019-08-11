@@ -29,6 +29,7 @@
                         <x:String>10</x:String>
                         <x:String>11</x:String>
                     </Picker.Items>
+                    
                 </Picker>
 
                 <Picker FontSize="Small" Grid.Column="1" Title="Класс" x:Name="pickerclassletter" SelectedIndexChanged="Pickerclassletter_SelectedIndexChanged">
@@ -68,15 +69,14 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical" Grid.Column="0">
-                                        <Label TextColor="##002E56" Text="{Binding number}" FontSize="Default" FontAttributes="Bold" HorizontalOptions="Center"></Label>
-                                        <Label TextColor="##002E56" Text="{Binding times}" HorizontalOptions="Center"></Label>
+                                        <Label Text="{Binding number}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Label  Text="{Binding times}" HorizontalOptions="CenterAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
-                                        <Label TextColor="##002E56" Text="{Binding subject}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"></Label>
-                                        <Label TextColor="##002E56" Text="{Binding classroom}" HorizontalOptions="Center"></Label>
+                                        <Label Text="{Binding subject}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"/>
+                                        <Label Text="{Binding classroom}" HorizontalOptions="CenterAndExpand"/>
                                     </StackLayout>
                                 </Grid>
-
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

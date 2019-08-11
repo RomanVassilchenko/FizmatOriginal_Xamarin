@@ -15,6 +15,7 @@ namespace FizmatOriginal.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SchedulePage : ContentPage
     {
+
         public int Count = 0;
         public short Counter = 0;
         public int SlidePosition = 0;
@@ -33,6 +34,11 @@ namespace FizmatOriginal.Views
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            /*
+                pickerclassnum.SelectedIndex = 5;
+                pickerclassletter.SelectedIndex = 2;
+                pickerdayofweek.SelectedIndex = 0;
+            */
             OnGetList(LanguageChanged);
         }
         protected async void OnGetList(string Language)
