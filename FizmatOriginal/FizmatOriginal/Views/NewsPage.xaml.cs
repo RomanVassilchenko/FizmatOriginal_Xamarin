@@ -1,4 +1,5 @@
 ﻿using FizmatOriginal.Models;
+using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using System;
@@ -70,7 +71,7 @@ namespace FizmatOriginal.Views
                 }
                 catch (Exception ey)
                 {
-                    Debug.WriteLine("" + ey);
+                    Crashes.TrackError(ey);
                 }
             }
         }
