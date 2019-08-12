@@ -32,6 +32,11 @@ namespace FizmatOriginal.Views
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             OnGetList();
+            myList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+            {
+                if (e.Item == null) return;
+                ((ListView)sender).SelectedItem = null; // de-select the row
+            };
             myList.ItemSelected += myList_ItemSelectedAsync;
         }
 

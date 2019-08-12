@@ -17,6 +17,7 @@ namespace FizmatOriginal.Views
     {
 
         public int Count = 0;
+        ViewCell lastCell;
         public short Counter = 0;
         public int SlidePosition = 0;
         int heightRowsList = 90;
@@ -39,8 +40,14 @@ namespace FizmatOriginal.Views
                 pickerclassletter.SelectedIndex = 2;
                 pickerdayofweek.SelectedIndex = 0;
             */
+            myList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+            {
+                if (e.Item == null) return;
+                ((ListView)sender).SelectedItem = null; // de-select the row
+            };
             OnGetList(LanguageChanged);
         }
+        
         protected async void OnGetList(string Language)
         {
             if (Language.ToUpper() == "RU") Url = "https://script.google.com/macros/s/AKfycby3InMdcI8rP1AC9JvGfZYfYlYEMIqmHV-ZGXTUDQV7PTz27_c/exec";

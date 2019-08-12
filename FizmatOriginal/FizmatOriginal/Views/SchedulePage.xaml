@@ -59,7 +59,7 @@
             <Grid Grid.Row="1">
                 <ActivityIndicator VerticalOptions="Center" HorizontalOptions="Center" x:Name="activity_indicator" Color="#4D7EE1" />
                 <!-- ListView-->
-                <ListView x:Name="myList" HasUnevenRows="true">
+                <ListView x:Name="myList" HasUnevenRows="true" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
