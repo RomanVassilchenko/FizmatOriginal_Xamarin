@@ -19,6 +19,7 @@ namespace FizmatOriginal.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewsPage : ContentPage
     {
+        string selectedurl = "";
         public int Count = 0;
         public short Counter = 0;
         public int SlidePosition = 0;
@@ -26,28 +27,23 @@ namespace FizmatOriginal.Views
         ObservableCollection<News> trends = new ObservableCollection<News>();
         private string Url = "https://script.google.com/macros/s/AKfycbyi9dWCzKzI1vR5u3f05KtN6rHTutTd1QoTE-4eSyLDT6XdCTQ/exec";
         private HttpClient _client = new HttpClient();
-        WebView webView;
 
         public NewsPage()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             OnGetList();
-            myList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
-            {
-                if (e.Item == null) return;
-                ((ListView)sender).SelectedItem = null; // de-select the row
-            };
             myList.ItemSelected += myList_ItemSelectedAsync;
         }
 
         private async void myList_ItemSelectedAsync(object sender, SelectedItemChangedEventArgs e)
         {
             var selectedCategory = e.SelectedItem as News;
-            string selectedItem = "";
             if (selectedCategory != null)
-                selectedItem = selectedCategory.url;
-            await Navigation.PushAsync(new WebPage(selectedItem));
+                selectedurl = selectedCategory.url;
+            ((ListView)sender).SelectedItem = null;
+            WebPage webPage = new WebPage(selectedurl);
+            await Navigation.PushAsync(webPage);
         }
 
         protected async void OnGetList()

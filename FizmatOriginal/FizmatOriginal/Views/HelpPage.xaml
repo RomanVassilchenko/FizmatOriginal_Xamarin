@@ -10,7 +10,6 @@
 
             <ActivityIndicator VerticalOptions="Center" HorizontalOptions="Center" x:Name="activity_indicator_Web" Color="#4D7EE1" />
             <WebView x:Name="webViewHelp"/>
-            
         </Grid>
     </ContentPage.Content>
 </ContentPage>
