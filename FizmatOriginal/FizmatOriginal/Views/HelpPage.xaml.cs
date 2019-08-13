@@ -20,7 +20,7 @@ namespace FizmatOriginal.Views
             {
                 activity_indicator_Web.IsRunning = true;
                 //TODO Change source to help web
-                webViewHelp.Source = "https://astana.fizmat.kz/";
+                webViewHelp.Source = "https://docs.google.com/forms/d/e/1FAIpQLScbYMtTZd4DJ-M7vd_zFOdw794t6CStYKVK21m0JbdMP3fmMg/viewform";
             }
             catch
             { 
