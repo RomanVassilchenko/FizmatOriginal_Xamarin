@@ -1,5 +1,4 @@
-﻿using FizmatOriginal.Services;
-using FizmatOriginal.Views;
+﻿using FizmatOriginal.Views;
 using Xamarin.Forms;
 
 namespace FizmatOriginal
@@ -11,7 +10,6 @@ namespace FizmatOriginal
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new MainPage();
         }
 
