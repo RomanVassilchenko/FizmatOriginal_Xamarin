@@ -24,7 +24,9 @@ namespace FizmatOriginal.Views
         public short Counter = 0;
         public int SlidePosition = 0;
         int heightRowsList = 90;
+
         ObservableCollection<News> trends = new ObservableCollection<News>();
+
         private string Url = "https://script.google.com/macros/s/AKfycbyi9dWCzKzI1vR5u3f05KtN6rHTutTd1QoTE-4eSyLDT6XdCTQ/exec";
         private HttpClient _client = new HttpClient();
 
@@ -32,8 +34,8 @@ namespace FizmatOriginal.Views
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            OnGetList();
             myList.ItemSelected += myList_ItemSelectedAsync;
+            OnGetList();
         }
 
         private async void myList_ItemSelectedAsync(object sender, SelectedItemChangedEventArgs e)
