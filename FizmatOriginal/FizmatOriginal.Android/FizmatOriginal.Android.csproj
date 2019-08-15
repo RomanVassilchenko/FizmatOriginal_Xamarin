@@ -54,8 +54,8 @@
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidLinkTool>proguard</AndroidLinkTool>
-    <AndroidLinkMode>Full</AndroidLinkMode>
-    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidCreatePackagePerAbi>false</AndroidCreatePackagePerAbi>
     <AndroidSupportedAbis>armeabi-v7a;arm64-v8a</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
