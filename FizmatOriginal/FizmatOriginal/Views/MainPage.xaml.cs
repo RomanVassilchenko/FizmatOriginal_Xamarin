@@ -1,9 +1,8 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using System.ComponentModel;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
 namespace FizmatOriginal.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer

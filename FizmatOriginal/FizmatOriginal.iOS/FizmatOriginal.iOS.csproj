@@ -190,4 +190,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\tab_help%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rotate.png" />
+  </ItemGroup>
 </Project>

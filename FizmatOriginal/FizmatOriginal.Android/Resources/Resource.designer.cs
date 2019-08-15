@@ -6439,22 +6439,25 @@ namespace FizmatOriginal.Droid
 			public const int notify_panel_notification_icon_bg = 2131165496;
 			
 			// aapt resource value: 0x7F070139
-			public const int tab_help = 2131165497;
+			public const int rotate = 2131165497;
 			
 			// aapt resource value: 0x7F07013A
-			public const int tab_news = 2131165498;
+			public const int tab_help = 2131165498;
 			
 			// aapt resource value: 0x7F07013B
-			public const int tab_schedule = 2131165499;
+			public const int tab_news = 2131165499;
 			
 			// aapt resource value: 0x7F07013C
-			public const int tooltip_frame_dark = 2131165500;
+			public const int tab_schedule = 2131165500;
 			
 			// aapt resource value: 0x7F07013D
-			public const int tooltip_frame_light = 2131165501;
+			public const int tooltip_frame_dark = 2131165501;
 			
 			// aapt resource value: 0x7F07013E
-			public const int xamarin_logo = 2131165502;
+			public const int tooltip_frame_light = 2131165502;
+			
+			// aapt resource value: 0x7F07013F
+			public const int xamarin_logo = 2131165503;
 			
 			static Drawable()
 			{

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:customActivityIndicator="clr-namespace:FizmatOriginal.Models"
              mc:Ignorable="d"
              x:Class="FizmatOriginal.Views.SchedulePage">
     
@@ -57,7 +58,7 @@
                 <Button FontSize="Small" Visual="Material" Grid.Column="3" Text="Показать" Clicked="ButtonShowClass_Clicked"/>
             </Grid>
             <Grid Grid.Row="1">
-                <ActivityIndicator VerticalOptions="Center" HorizontalOptions="Center" x:Name="activity_indicator" Color="#4D7EE1" />
+                <customActivityIndicator:CustomActivityIndicator x:Name="activity_indicator" WidthRequest="50" HeightRequest="50" />
                 <!-- ListView-->
                 <ListView x:Name="myList" HasUnevenRows="true" >
                     <ListView.ItemTemplate>

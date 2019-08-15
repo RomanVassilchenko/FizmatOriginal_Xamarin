@@ -5,7 +5,6 @@ using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Net.Http;
 
 using Xamarin.Forms;
@@ -48,7 +47,7 @@ namespace FizmatOriginal.Views
 
             OnGetList(LanguageChanged);
         }
-        
+
         protected async void OnGetList(string Language)
         {
             if (Language.ToUpper() == "RU") Url = "https://script.google.com/macros/s/AKfycby3InMdcI8rP1AC9JvGfZYfYlYEMIqmHV-ZGXTUDQV7PTz27_c/exec";
@@ -147,6 +146,6 @@ namespace FizmatOriginal.Views
             else ChoseClassAndDay(classnumChanged, classletterChanged, numChanged, LanguageChanged);
         }
 
-        
+
     }
 }
