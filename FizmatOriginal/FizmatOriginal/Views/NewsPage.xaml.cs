@@ -55,12 +55,13 @@ namespace FizmatOriginal.Views
                     var content = await _client.GetStringAsync(Url);
                     var tr = JsonConvert.DeserializeObject<List<News>>(content);
                     trends = new ObservableCollection<News>(tr);
-                    int i = trends.Count;
+                    List<News> json = new List<News>(trends);
+                    myList.ItemsSource = json;
+                    int i = json.Count;
                     if (i > 0)
                     {
                         activity_indicator.IsRunning = false;
                     }
-                    myList.ItemsSource = trends;
                     i = (trends.Count * heightRowsList);
                     activity_indicator.HeightRequest = i;
                 }

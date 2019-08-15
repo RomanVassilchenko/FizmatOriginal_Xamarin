@@ -1,6 +1,6 @@
 ﻿namespace FizmatOriginal.Models
 {
-    public class News
+    class News
     {
         public string title { get; set; }
         public string description { get; set; }
