@@ -27,19 +27,20 @@ namespace FizmatOriginal.Views
         private HttpClient _client = new HttpClient();
 
         public NewsPage()
-        {
+        { 
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            myList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+            {
+                if (e.Item == null) return;
+                ((ListView)sender).SelectedItem = null;
+            };
             myList.ItemSelected += myList_ItemSelectedAsync;
             OnGetList();
         }
 
         private async void myList_ItemSelectedAsync(object sender, SelectedItemChangedEventArgs e)
         {
-            var selectedCategory = e.SelectedItem as News;
-            if (selectedCategory != null)
-                selectedurl = selectedCategory.url;
-            ((ListView)sender).SelectedItem = null;
             WebPage webPage = new WebPage(selectedurl);
             await Navigation.PushAsync(webPage);
         }
@@ -54,12 +55,12 @@ namespace FizmatOriginal.Views
                     var content = await _client.GetStringAsync(Url);
                     var tr = JsonConvert.DeserializeObject<List<News>>(content);
                     trends = new ObservableCollection<News>(tr);
-                    myList.ItemsSource = trends;
                     int i = trends.Count;
                     if (i > 0)
                     {
                         activity_indicator.IsRunning = false;
                     }
+                    myList.ItemsSource = trends;
                     i = (trends.Count * heightRowsList);
                     activity_indicator.HeightRequest = i;
                 }
