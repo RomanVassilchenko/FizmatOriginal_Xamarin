@@ -14,22 +14,19 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
-                                <Label x:Name="UrlText" Text="{Binding url}" IsVisible="False" />
-                                <Grid Margin="5">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="AUTO"/>
-                                        <ColumnDefinition Width="AUTO"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Image Source="{Binding image}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" WidthRequest="100"/>
-                                    <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
-                                        <StackLayout>
-                                            <Label Text="{Binding title}" FontAttributes="Bold" MaxLines="1"/>
-                                            <Label Text="{Binding date}" FontAttributes="Italic"/>
-                                        </StackLayout>
-                                        <Label Text="{Binding description}" MaxLines="3"/>
+                            <Grid Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="AUTO"/>
+                                    <ColumnDefinition Width="AUTO"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding image}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" WidthRequest="100"/>
+                                <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+                                    <StackLayout>
+                                        <Label Text="{Binding title}" FontAttributes="Bold" MaxLines="1"/>
+                                        <Label Text="{Binding date}" FontAttributes="Italic"/>
                                     </StackLayout>
-                                </Grid>
+                                    <Label Text="{Binding description}" MaxLines="3"/>
+                                </StackLayout>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

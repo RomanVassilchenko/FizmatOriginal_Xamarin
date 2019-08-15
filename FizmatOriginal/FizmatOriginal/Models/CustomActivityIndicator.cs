@@ -64,8 +64,8 @@ namespace FizmatOriginal.Models
             Content = _image;
             HorizontalOptions = LayoutOptions.Center;
             VerticalOptions = LayoutOptions.Center;
-            WidthRequest = 40;
-            HeightRequest = 40;
+            WidthRequest = 50;
+            HeightRequest = 50;
             Source = "rotate.png";
             Scale = 0;
         }

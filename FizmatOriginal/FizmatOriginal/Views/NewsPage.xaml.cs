@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,9 +15,6 @@ namespace FizmatOriginal.Views
     public partial class NewsPage : ContentPage
     {
         string selectedurl = "";
-        public int Count = 0;
-        public short Counter = 0;
-        public int SlidePosition = 0;
         int heightRowsList = 90;
 
         ObservableCollection<News> trends = new ObservableCollection<News>();
@@ -27,22 +23,19 @@ namespace FizmatOriginal.Views
         private HttpClient _client = new HttpClient();
 
         public NewsPage()
-        { 
+        {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            myList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+            myList.ItemTapped += async (object sender, ItemTappedEventArgs e) =>
             {
+                var data = (News)(e.Item);
+                selectedurl = data.url;
                 if (e.Item == null) return;
                 ((ListView)sender).SelectedItem = null;
+                WebPage webPage = new WebPage(selectedurl);
+                await Navigation.PushAsync(webPage);
             };
-            myList.ItemSelected += myList_ItemSelectedAsync;
             OnGetList();
-        }
-
-        private async void myList_ItemSelectedAsync(object sender, SelectedItemChangedEventArgs e)
-        {
-            WebPage webPage = new WebPage(selectedurl);
-            await Navigation.PushAsync(webPage);
         }
 
         protected async void OnGetList()

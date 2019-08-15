@@ -16,9 +16,6 @@ namespace FizmatOriginal.Views
     public partial class SchedulePage : ContentPage
     {
 
-        public int Count = 0;
-        public short Counter = 0;
-        public int SlidePosition = 0;
         int heightRowsList = 90;
 
         ObservableCollection<Subject> trends = new ObservableCollection<Subject>();
