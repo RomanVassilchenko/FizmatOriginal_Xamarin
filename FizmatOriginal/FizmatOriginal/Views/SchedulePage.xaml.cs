@@ -104,17 +104,20 @@ namespace FizmatOriginal.Views
         private void Pickerclassnum_SelectedIndexChanged(object sender, EventArgs e)
         {
             classnumChanged = (pickerclassnum.Items[pickerclassnum.SelectedIndex]).ToString();
+            ShowSchedule();
         }
 
         private void Pickerclassletter_SelectedIndexChanged(object sender, EventArgs e)
         {
             classletterChanged = (pickerclassletter.Items[pickerclassletter.SelectedIndex]).ToString();
             LanguageChanged = LanguageCheck(classletterChanged);
+            ShowSchedule();
         }
 
         private void Pickerdayofweek_SelectedIndexChanged(object sender, EventArgs e)
         {
             numChanged = WeekCheck(pickerdayofweek.Items[pickerdayofweek.SelectedIndex]);
+            ShowSchedule();
         }
         private int WeekCheck(string day)
         {
@@ -132,8 +135,7 @@ namespace FizmatOriginal.Views
             if (letter == "A" || letter == "B") return "KZ";
             else return "RU";
         }
-
-        private void ButtonShowClass_Clicked(object sender, EventArgs e)
+        public void ShowSchedule()
         {
             if (LanguageChanged != OldLanguage)
             {

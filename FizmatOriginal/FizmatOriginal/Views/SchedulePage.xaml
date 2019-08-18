@@ -54,8 +54,6 @@
                         <x:String>Суббота</x:String>
                     </Picker.Items>
                 </Picker>
-
-                <Button FontSize="Small" Visual="Material" Grid.Column="3" Text="Показать" Clicked="ButtonShowClass_Clicked"/>
             </Grid>
             <Grid Grid.Row="1">
                 <customActivityIndicator:CustomActivityIndicator x:Name="activity_indicator" WidthRequest="50" HeightRequest="50" />
