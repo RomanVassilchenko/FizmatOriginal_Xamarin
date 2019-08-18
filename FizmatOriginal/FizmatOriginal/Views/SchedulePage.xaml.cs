@@ -23,7 +23,7 @@ namespace FizmatOriginal.Views
         public string classnumChanged = "10", classletterChanged = "D", LanguageChanged = "RU", OldLanguage = "RU";
         public int numChanged = 1;
 
-        private string Url = "https://script.google.com/macros/s/AKfycby3InMdcI8rP1AC9JvGfZYfYlYEMIqmHV-ZGXTUDQV7PTz27_c/exec";
+        private string Url = "https://script.google.com/macros/s/AKfycbxlGnl54weDQqW6Z6FnMLP18lVA8fCtJKKACdTegeRGR3MQOlc/exec";
 
         private HttpClient _client = new HttpClient();
 
@@ -47,8 +47,8 @@ namespace FizmatOriginal.Views
 
         protected async void OnGetList(string Language)
         {
-            if (Language.ToUpper() == "RU") Url = "https://script.google.com/macros/s/AKfycby3InMdcI8rP1AC9JvGfZYfYlYEMIqmHV-ZGXTUDQV7PTz27_c/exec";
-            if (Language.ToUpper() == "KZ") Url = "https://script.google.com/macros/s/AKfycbxYd2luv9dXqr8DUAMiuAHvfuJ_JBJ3V9Df4aBWMWrfcXQORW8/exec";
+            if (Language.ToUpper() == "RU") Url = "https://script.google.com/macros/s/AKfycbxlGnl54weDQqW6Z6FnMLP18lVA8fCtJKKACdTegeRGR3MQOlc/exec";
+            if (Language.ToUpper() == "KZ") Url = "https://script.google.com/macros/s/AKfycbxbCvm8IEiUue9GGIRyn3zxqrTMM4uhznB9bxpe14m7_lpuu3XF/exec";
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
