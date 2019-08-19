@@ -8,7 +8,7 @@
              x:Class="FizmatOriginal.Views.SchedulePage">
     
     <ContentPage.Content>
-        <Grid>
+        <Grid BackgroundColor="#002e56">
             <Grid.RowDefinitions>
                 <RowDefinition Height="AUTO"/>
                 <RowDefinition Height="*"/>
@@ -20,7 +20,7 @@
                     <ColumnDefinition Width="AUTO"/>
                     <ColumnDefinition Width="AUTO"/>
                 </Grid.ColumnDefinitions>
-                <Picker FontSize="Small"  Grid.Column="0" x:Name="pickerclassnum" SelectedIndexChanged="Pickerclassnum_SelectedIndexChanged" Title="Параллель">
+                <Picker TextColor="#FFFA20" FontSize="Medium"  Grid.Column="0" x:Name="pickerclassnum" SelectedIndexChanged="Pickerclassnum_SelectedIndexChanged" Title="Параллель">
                     <Picker.Items>
                         <x:String>5</x:String>
                         <x:String>6</x:String>
@@ -33,7 +33,7 @@
                     
                 </Picker>
 
-                <Picker FontSize="Small" Grid.Column="1" Title="Класс" x:Name="pickerclassletter" SelectedIndexChanged="Pickerclassletter_SelectedIndexChanged">
+                <Picker TextColor="#FFFA20" FontSize="Medium" Grid.Column="1" Title="Класс" x:Name="pickerclassletter" SelectedIndexChanged="Pickerclassletter_SelectedIndexChanged">
                     <Picker.Items>
                         <x:String>A</x:String>
                         <x:String>B</x:String>
@@ -44,7 +44,7 @@
                     </Picker.Items>
                 </Picker>
 
-                <Picker FontSize="Small" Grid.Column="2" Title="День недели" x:Name="pickerdayofweek" SelectedIndexChanged="Pickerdayofweek_SelectedIndexChanged">
+                <Picker TextColor="#FFFA20" FontSize="Medium" Grid.Column="2" Title="День недели" x:Name="pickerdayofweek" SelectedIndexChanged="Pickerdayofweek_SelectedIndexChanged">
                     <Picker.Items>
                         <x:String>Понедельник</x:String>
                         <x:String>Вторник</x:String>
@@ -58,7 +58,7 @@
             <Grid Grid.Row="1">
                 <customActivityIndicator:CustomActivityIndicator x:Name="activity_indicator" WidthRequest="50" HeightRequest="50" />
                 <!-- ListView-->
-                <ListView x:Name="myList" HasUnevenRows="true" >
+                <ListView x:Name="myList" HasUnevenRows="true" SeparatorColor="#000000" BackgroundColor="#002e56">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -67,13 +67,13 @@
                                         <ColumnDefinition Width="AUTO"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical" Grid.Column="0">
-                                        <Label Text="{Binding number}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                        <Label  Text="{Binding times}" HorizontalOptions="CenterAndExpand"/>
+                                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="0">
+                                        <Label TextColor="#cb232b" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Medium" Text="{Binding number}" FontAttributes="Bold"/>
+                                        <Label TextColor="#FFFFFF" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="10" Text="{Binding times}"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
-                                        <Label Text="{Binding subject}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"/>
-                                        <Label Text="{Binding classroom}" HorizontalOptions="CenterAndExpand"/>
+                                        <Label TextColor="#FFFFFF" Text="{Binding subject}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"/>
+                                        <Label TextColor="Gray" Text="{Binding classroom}" HorizontalOptions="CenterAndExpand"/>
                                     </StackLayout>
                                 </Grid>
                             </ViewCell>
