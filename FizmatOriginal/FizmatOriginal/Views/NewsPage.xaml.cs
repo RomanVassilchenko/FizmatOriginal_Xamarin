@@ -14,13 +14,12 @@ namespace FizmatOriginal.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewsPage : ContentPage
     {
-        string selectedurl = "";
-        int heightRowsList = 90;
+        private string selectedurl = "";
+        private readonly int heightRowsList = 90;
+        private ObservableCollection<News> trends = new ObservableCollection<News>();
 
-        ObservableCollection<News> trends = new ObservableCollection<News>();
-
-        private string Url = "https://script.google.com/macros/s/AKfycbyi9dWCzKzI1vR5u3f05KtN6rHTutTd1QoTE-4eSyLDT6XdCTQ/exec";
-        private HttpClient _client = new HttpClient();
+        private readonly string Url = "https://script.google.com/macros/s/AKfycbyi9dWCzKzI1vR5u3f05KtN6rHTutTd1QoTE-4eSyLDT6XdCTQ/exec";
+        private readonly HttpClient _client = new HttpClient();
 
         public NewsPage()
         {
@@ -28,10 +27,12 @@ namespace FizmatOriginal.Views
             NavigationPage.SetHasNavigationBar(this, false);
             myList.ItemTapped += async (object sender, ItemTappedEventArgs e) =>
             {
-                var data = (News)(e.Item);
+                News data = (News)(e.Item);
                 selectedurl = data.url;
-                if (e.Item == null) return;
-                ((ListView)sender).SelectedItem = null;
+                if (e.Item == null)
+                {
+                    return;
+                } ((ListView)sender).SelectedItem = null;
                 WebPage webPage = new WebPage(selectedurl);
                 await Navigation.PushAsync(webPage);
             };
@@ -45,8 +46,8 @@ namespace FizmatOriginal.Views
                 try
                 {
                     activity_indicator.IsRunning = true;
-                    var content = await _client.GetStringAsync(Url);
-                    var tr = JsonConvert.DeserializeObject<List<News>>(content);
+                    string content = await _client.GetStringAsync(Url);
+                    List<News> tr = JsonConvert.DeserializeObject<List<News>>(content);
                     trends = new ObservableCollection<News>(tr);
                     List<News> json = new List<News>(trends);
                     myList.ItemsSource = json;

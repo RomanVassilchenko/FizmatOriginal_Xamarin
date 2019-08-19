@@ -56,9 +56,9 @@
                 </Picker>
             </Grid>
             <Grid Grid.Row="1">
-                <customActivityIndicator:CustomActivityIndicator x:Name="activity_indicator" WidthRequest="50" HeightRequest="50" />
+                <customActivityIndicator:CustomActivityIndicator x:Name="activity_indicator" WidthRequest="60" HeightRequest="60" />
                 <!-- ListView-->
-                <ListView x:Name="myList" HasUnevenRows="true" SeparatorColor="#000000" BackgroundColor="#002e56">
+                <ListView x:Name="myList" HasUnevenRows="true" SeparatorColor="#000000" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

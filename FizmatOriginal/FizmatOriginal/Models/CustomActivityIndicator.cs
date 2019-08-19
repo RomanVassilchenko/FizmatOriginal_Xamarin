@@ -46,16 +46,24 @@ namespace FizmatOriginal.Models
             if (propertyName == nameof(IsRunning) && IsEnabled)
             {
                 if (IsRunning)
+                {
                     StartAnimation();
+                }
                 else
+                {
                     StopAnimation();
+                }
             }
 
             if (propertyName == nameof(IsEnabled) && !IsEnabled && IsRunning)
+            {
                 StopAnimation();
+            }
 
             if (propertyName == nameof(Source))
+            {
                 _image.Source = Source;
+            }
         }
 
         private void InitView()

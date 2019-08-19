@@ -15,17 +15,15 @@ namespace FizmatOriginal.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SchedulePage : ContentPage
     {
-
-        int heightRowsList = 90;
-
-        ObservableCollection<Subject> trends = new ObservableCollection<Subject>();
+        private readonly int heightRowsList = 90;
+        private ObservableCollection<Subject> trends = new ObservableCollection<Subject>();
 
         public string classnumChanged = "10", classletterChanged = "D", LanguageChanged = "RU", OldLanguage = "RU";
         public int numChanged = 1;
 
         private string Url = "https://script.google.com/macros/s/AKfycbxlGnl54weDQqW6Z6FnMLP18lVA8fCtJKKACdTegeRGR3MQOlc/exec";
 
-        private HttpClient _client = new HttpClient();
+        private readonly HttpClient _client = new HttpClient();
 
         public SchedulePage()
         {
@@ -38,8 +36,10 @@ namespace FizmatOriginal.Views
 
             myList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
-                if (e.Item == null) return;
-                ((ListView)sender).SelectedItem = null;
+                if (e.Item == null)
+                {
+                    return;
+                } ((ListView)sender).SelectedItem = null;
             };
 
             OnGetList(LanguageChanged);
@@ -47,15 +47,23 @@ namespace FizmatOriginal.Views
 
         protected async void OnGetList(string Language)
         {
-            if (Language.ToUpper() == "RU") Url = "https://script.google.com/macros/s/AKfycbxlGnl54weDQqW6Z6FnMLP18lVA8fCtJKKACdTegeRGR3MQOlc/exec";
-            if (Language.ToUpper() == "KZ") Url = "https://script.google.com/macros/s/AKfycbxbCvm8IEiUue9GGIRyn3zxqrTMM4uhznB9bxpe14m7_lpuu3XF/exec";
+            if (Language.ToUpper() == "RU")
+            {
+                Url = "https://script.google.com/macros/s/AKfycbxlGnl54weDQqW6Z6FnMLP18lVA8fCtJKKACdTegeRGR3MQOlc/exec";
+            }
+
+            if (Language.ToUpper() == "KZ")
+            {
+                Url = "https://script.google.com/macros/s/AKfycbxbCvm8IEiUue9GGIRyn3zxqrTMM4uhznB9bxpe14m7_lpuu3XF/exec";
+            }
+
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     activity_indicator.IsRunning = true;
-                    var content = await _client.GetStringAsync(Url);
-                    var tr = JsonConvert.DeserializeObject<List<Subject>>(content);
+                    string content = await _client.GetStringAsync(Url);
+                    List<Subject> tr = JsonConvert.DeserializeObject<List<Subject>>(content);
                     trends = new ObservableCollection<Subject>(tr);
                     ChoseClassAndDay(classnumChanged, classletterChanged, numChanged, LanguageChanged);
                     int i = trends.Count;
@@ -121,19 +129,46 @@ namespace FizmatOriginal.Views
         }
         private int WeekCheck(string day)
         {
-            if (day == "Понедельник") return 1;
-            else if (day == "Вторник") return 2;
-            else if (day == "Среда") return 3;
-            else if (day == "Четверг") return 4;
-            else if (day == "Пятница") return 5;
-            else if (day == "Суббота") return 6;
-            else return 1;
+            if (day == "Понедельник")
+            {
+                return 1;
+            }
+            else if (day == "Вторник")
+            {
+                return 2;
+            }
+            else if (day == "Среда")
+            {
+                return 3;
+            }
+            else if (day == "Четверг")
+            {
+                return 4;
+            }
+            else if (day == "Пятница")
+            {
+                return 5;
+            }
+            else if (day == "Суббота")
+            {
+                return 6;
+            }
+            else
+            {
+                return 1;
+            }
         }
 
         private string LanguageCheck(string letter)
         {
-            if (letter == "A" || letter == "B") return "KZ";
-            else return "RU";
+            if (letter == "A" || letter == "B")
+            {
+                return "KZ";
+            }
+            else
+            {
+                return "RU";
+            }
         }
         public void ShowSchedule()
         {
@@ -142,7 +177,10 @@ namespace FizmatOriginal.Views
                 OldLanguage = LanguageChanged;
                 OnGetList(LanguageChanged);
             }
-            else ChoseClassAndDay(classnumChanged, classletterChanged, numChanged, LanguageChanged);
+            else
+            {
+                ChoseClassAndDay(classnumChanged, classletterChanged, numChanged, LanguageChanged);
+            }
         }
 
 

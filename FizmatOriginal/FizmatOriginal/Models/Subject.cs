@@ -1,6 +1,6 @@
 ﻿namespace FizmatOriginal.Models
 {
-    class Subject
+    internal class Subject
     {
         public string classnumber { get; set; }
         public string number { get; set; }

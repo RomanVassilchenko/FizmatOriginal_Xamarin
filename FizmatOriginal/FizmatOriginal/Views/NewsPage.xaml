@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              x:Class="FizmatOriginal.Views.NewsPage">
     <ContentPage.Content>
-        <Grid>
+        <Grid BackgroundColor="#002e56">
             <customActivityIndicator:CustomActivityIndicator x:Name="activity_indicator" WidthRequest="50" HeightRequest="50" />
             <!-- ListView-->
             <ListView x:Name="myList" HasUnevenRows="true">
@@ -22,10 +22,10 @@
                                 <Image Source="{Binding image}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" WidthRequest="100"/>
                                 <StackLayout Margin="5" Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
                                     <StackLayout>
-                                        <Label Text="{Binding title}" FontAttributes="Bold" MaxLines="2"/>
-                                        <Label Text="{Binding description}" MaxLines="3"/>
+                                        <Label TextColor="White" Text="{Binding title}" FontAttributes="Bold" MaxLines="2"/>
+                                        <Label TextColor="LightGray" Text="{Binding description}" MaxLines="3"/>
                                     </StackLayout>
-                                    <Label Text="{Binding date}" FontAttributes="Italic"/>
+                                    <Label TextColor="Gray" Text="{Binding date}" FontAttributes="Italic"/>
                                 </StackLayout>
                             </Grid>
                         </ViewCell>
