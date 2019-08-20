@@ -7,7 +7,7 @@
              x:Class="FizmatOriginal.Views.HelpPage">
     <ContentPage.Content>
         <Grid>
-            
+            <Label Margin="5,5,5,5" Text="Помощь ушла помогать другому ученику. Ждите обновление приложение и может она вам поможет!" TextColor="White" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
