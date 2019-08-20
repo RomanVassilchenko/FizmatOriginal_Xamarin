@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -33,6 +32,8 @@ namespace FizmatOriginal.Views
             pickerclassnum.SelectedIndex = 5;
             pickerclassletter.SelectedIndex = 2;
             pickerdayofweek.SelectedIndex = 0;
+
+
 
             myList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {

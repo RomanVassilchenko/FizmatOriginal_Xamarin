@@ -6,8 +6,9 @@
             mc:Ignorable="d"
             xmlns:views="clr-namespace:FizmatOriginal.Views"
             x:Class="FizmatOriginal.Views.MainPage"
-            BackgroundColor="#012647"
+            BackgroundColor="#011D35"
             BarTextColor="White"
+            UnselectedTabColor="White"
             SelectedTabColor="#A11015">
 
     <TabbedPage.Children>

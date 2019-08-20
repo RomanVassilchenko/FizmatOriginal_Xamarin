@@ -181,4 +181,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\tab_schedule.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_schedule%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_help%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_help%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_news%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_news%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_schedule%402x.png" />
+  </ItemGroup>
 </Project>
