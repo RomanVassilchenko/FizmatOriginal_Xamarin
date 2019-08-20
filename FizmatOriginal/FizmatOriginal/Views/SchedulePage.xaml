@@ -8,7 +8,7 @@
              x:Class="FizmatOriginal.Views.SchedulePage">
     
     <ContentPage.Content>
-        <Grid BackgroundColor="#002e56">
+        <Grid BackgroundColor="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="AUTO"/>
                 <RowDefinition Height="*"/>
@@ -20,7 +20,8 @@
                     <ColumnDefinition Width="AUTO"/>
                     <ColumnDefinition Width="AUTO"/>
                 </Grid.ColumnDefinitions>
-                <Picker TextColor="#FFFA20" FontSize="Medium"  Grid.Column="0" x:Name="pickerclassnum" SelectedIndexChanged="Pickerclassnum_SelectedIndexChanged" Title="Параллель">
+                <Image Grid.Column="0" Source="logo"/>
+                <Picker TextColor="#002e56" FontSize="Medium"  Grid.Column="1" x:Name="pickerclassnum" SelectedIndexChanged="Pickerclassnum_SelectedIndexChanged" Title="Параллель">
                     <Picker.Items>
                         <x:String>5</x:String>
                         <x:String>6</x:String>
@@ -33,7 +34,7 @@
                     
                 </Picker>
 
-                <Picker TextColor="#FFFA20" FontSize="Medium" Grid.Column="1" Title="Класс" x:Name="pickerclassletter" SelectedIndexChanged="Pickerclassletter_SelectedIndexChanged">
+                <Picker TextColor="#002e56" FontSize="Medium" Grid.Column="2" Title="Класс" x:Name="pickerclassletter" SelectedIndexChanged="Pickerclassletter_SelectedIndexChanged">
                     <Picker.Items>
                         <x:String>A</x:String>
                         <x:String>B</x:String>
@@ -44,7 +45,7 @@
                     </Picker.Items>
                 </Picker>
 
-                <Picker TextColor="#FFFA20" FontSize="Medium" Grid.Column="2" Title="День недели" x:Name="pickerdayofweek" SelectedIndexChanged="Pickerdayofweek_SelectedIndexChanged">
+                <Picker TextColor="#002e56" FontSize="Medium" Grid.Column="3" Title="День недели" x:Name="pickerdayofweek" SelectedIndexChanged="Pickerdayofweek_SelectedIndexChanged">
                     <Picker.Items>
                         <x:String>Понедельник</x:String>
                         <x:String>Вторник</x:String>
@@ -56,9 +57,8 @@
                 </Picker>
             </Grid>
             <Grid Grid.Row="1">
-                <customActivityIndicator:CustomActivityIndicator x:Name="activity_indicator" WidthRequest="60" HeightRequest="60" />
                 <!-- ListView-->
-                <ListView x:Name="myList" HasUnevenRows="true" SeparatorColor="#000000" >
+                <ListView x:Name="myList" HasUnevenRows="true" SeparatorColor="#000000" BackgroundColor="#012647" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -68,7 +68,7 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="0">
-                                        <Label TextColor="#cb232b" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Medium" Text="{Binding number}" FontAttributes="Bold"/>
+                                        <Label TextColor="#DE262C" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Medium" Text="{Binding number}" FontAttributes="Bold"/>
                                         <Label TextColor="#FFFFFF" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="10" Text="{Binding times}"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
@@ -80,6 +80,8 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <customActivityIndicator:CustomActivityIndicator x:Name="activity_indicator" WidthRequest="60" HeightRequest="60" />
+
             </Grid>
         </Grid>
     </ContentPage.Content>

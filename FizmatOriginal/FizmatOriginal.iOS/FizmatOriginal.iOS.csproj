@@ -193,4 +193,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\rotate.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo.png" />
+  </ItemGroup>
 </Project>
