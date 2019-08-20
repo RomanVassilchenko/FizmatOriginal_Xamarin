@@ -5,7 +5,10 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             mc:Ignorable="d"
             xmlns:views="clr-namespace:FizmatOriginal.Views"
-            x:Class="FizmatOriginal.Views.MainPage">
+            x:Class="FizmatOriginal.Views.MainPage"
+            BackgroundColor="#012647"
+            BarTextColor="White"
+            SelectedTabColor="#A11015">
 
     <TabbedPage.Children>
         <NavigationPage Title="Расписание">

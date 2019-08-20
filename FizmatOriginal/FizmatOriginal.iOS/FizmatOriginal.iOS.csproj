@@ -164,7 +164,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\tab_schedule.png" />
+    <BundleResource Include="Resources\rotate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_reload.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\tab_help.png" />
@@ -173,27 +179,6 @@
     <BundleResource Include="Resources\tab_news.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\tab_help%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\tab_schedule%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\tab_news%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\tab_schedule%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\tab_news%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\tab_help%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\rotate.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logo.png" />
+    <BundleResource Include="Resources\tab_schedule.png" />
   </ItemGroup>
 </Project>
