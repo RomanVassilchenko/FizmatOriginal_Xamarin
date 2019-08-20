@@ -25,7 +25,7 @@
                                         <Label TextColor="White" Text="{Binding title}" FontAttributes="Bold" MaxLines="2"/>
                                         <Label TextColor="LightGray" Text="{Binding description}" MaxLines="3"/>
                                     </StackLayout>
-                                    <Label TextColor="Gray" Text="{Binding date}" FontAttributes="Italic"/>
+                                    <Label HorizontalOptions="EndAndExpand" TextColor="Gray" Text="{Binding date}" FontAttributes="Italic"/>
                                 </StackLayout>
                             </Grid>
                         </ViewCell>

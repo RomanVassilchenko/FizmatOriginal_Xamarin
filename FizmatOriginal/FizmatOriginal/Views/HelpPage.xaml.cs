@@ -11,7 +11,6 @@ namespace FizmatOriginal.Views
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
-            webViewHelp.Source = "https://docs.google.com/forms/d/e/1FAIpQLScbYMtTZd4DJ-M7vd_zFOdw794t6CStYKVK21m0JbdMP3fmMg/viewform";
         }
     }
 }
