@@ -1,8 +1,8 @@
 ﻿using FizmatOriginal.Views;
+using Xamarin.Forms;
+using Microsoft.AppCenter.Push;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-using Microsoft.AppCenter.Push;
-using Xamarin.Forms;
 
 namespace FizmatOriginal
 {
@@ -18,8 +18,10 @@ namespace FizmatOriginal
 
         protected override void OnStart()
         {
-            Microsoft.AppCenter.AppCenter.Start("257a45d8-3a75-4e82-9d9b-554fab395414", typeof(Analytics), typeof(Crashes), typeof(Push));
-            Microsoft.AppCenter.Push.Push.SetEnabledAsync(true);
+            Microsoft.AppCenter.AppCenter.Start("257a45d8-3a75-4e82-9d9b-554fab395414",
+                   typeof(Analytics), typeof(Crashes));
+            Microsoft.AppCenter.AppCenter.Start("257a45d8-3a75-4e82-9d9b-554fab395414", typeof(Push));
+            Push.SetEnabledAsync(true);
         }
 
         protected override void OnSleep()

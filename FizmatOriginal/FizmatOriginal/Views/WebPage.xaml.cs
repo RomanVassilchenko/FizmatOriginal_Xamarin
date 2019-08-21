@@ -10,7 +10,6 @@ namespace FizmatOriginal.Views
         public WebPage(string url)
         {
             InitializeComponent();
-            
             WebViewPage.Source = url;
         }
     }

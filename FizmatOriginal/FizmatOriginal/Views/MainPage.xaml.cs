@@ -3,7 +3,6 @@ using Microsoft.AppCenter.Crashes;
 using System.ComponentModel;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
-using Microsoft.AppCenter.Push;
 namespace FizmatOriginal.Views
 {
     [DesignTimeVisible(false)]
@@ -13,6 +12,7 @@ namespace FizmatOriginal.Views
         {
             InitializeComponent();
             On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
+            
         }
     }
 }
