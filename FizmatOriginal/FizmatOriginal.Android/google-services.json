@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1094197449247",
+    "firebase_url": "https://fizmat-original.firebaseio.com",
+    "project_id": "fizmat-original",
+    "storage_bucket": "fizmat-original.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094197449247:android:6548df737603865c",
+        "android_client_info": {
+          "package_name": "com.fizmatoriginal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094197449247-qncio5mv5t4qb7o070qqsikf62bo24d7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9T5N-xUlYV2jeq2ZSo_TJUDzxi3y88ZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094197449247-qncio5mv5t4qb7o070qqsikf62bo24d7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
