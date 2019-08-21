@@ -21,7 +21,6 @@ namespace FizmatOriginal
             Microsoft.AppCenter.AppCenter.Start("257a45d8-3a75-4e82-9d9b-554fab395414",
                    typeof(Analytics), typeof(Crashes));
             Microsoft.AppCenter.AppCenter.Start("257a45d8-3a75-4e82-9d9b-554fab395414", typeof(Push));
-            Push.SetEnabledAsync(true);
         }
 
         protected override void OnSleep()

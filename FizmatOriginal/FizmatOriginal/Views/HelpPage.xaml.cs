@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AppCenter.Push;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,6 +12,11 @@ namespace FizmatOriginal.Views
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
+            isEnablePush();
+        }
+        private async void isEnablePush()
+        {
+            await Push.SetEnabledAsync(true);
         }
         private async void WebViewShowButton_Clicked(object sender, System.EventArgs e)
         {
