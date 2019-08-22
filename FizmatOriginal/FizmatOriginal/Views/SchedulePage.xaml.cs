@@ -106,6 +106,15 @@ namespace FizmatOriginal.Views
                     }
                 }
             }
+            if (weekclassjson.Count == 0)
+            {
+                myList.BackgroundColor = Color.FromHex("#012647");
+            }
+            else
+            {
+                myList.BackgroundColor = Color.Black;
+            }
+
             myList.ItemsSource = weekclassjson;
         }
 

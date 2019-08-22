@@ -57,26 +57,28 @@
             </Grid>
             <Grid Grid.Row="1">
                 <!-- ListView-->
-                <ListView x:Name="myList" HasUnevenRows="true" SeparatorColor="#000000" BackgroundColor="#012647" >
+                <ListView x:Name="myList" HasUnevenRows="true" SeparatorColor="#000000" BackgroundColor="Black" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid Margin="5">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="AUTO"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="0">
-                                        <Frame HeightRequest="27" WidthRequest="27" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0" BackgroundColor="Maroon">
-                                            <Label Text="{Binding number}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                                        </Frame>
-                                        <Label TextColor="#FFFFFF" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="10" Text="{Binding times}"/>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
-                                        <Label TextColor="#FFFFFF" Text="{Binding subject}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"/>
-                                        <Label TextColor="Gray" Text="{Binding classroom}" HorizontalOptions="CenterAndExpand"/>
-                                    </StackLayout>
-                                </Grid>
+                                <Frame BackgroundColor="#012647" Margin="0,0,0,3">
+                                    <Grid Margin="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="AUTO"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="0">
+                                            <Frame HeightRequest="27" WidthRequest="27" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0" BackgroundColor="Maroon">
+                                                <Label Text="{Binding number}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                            </Frame>
+                                            <Label TextColor="#FFFFFF" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="10" Text="{Binding times}"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+                                            <Label TextColor="#FFFFFF" Text="{Binding subject}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"/>
+                                            <Label TextColor="Gray" Text="{Binding classroom}" HorizontalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

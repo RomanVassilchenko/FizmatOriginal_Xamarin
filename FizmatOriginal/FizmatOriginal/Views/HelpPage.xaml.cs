@@ -18,10 +18,32 @@ namespace FizmatOriginal.Views
         {
             await Push.SetEnabledAsync(true);
         }
-        private async void WebViewShowButton_Clicked(object sender, System.EventArgs e)
+        private void SendEmailButton_Clicked(object sender, System.EventArgs e)
         {
-            WebPage webPage = new WebPage("https://astana.fizmat.kz/kontakty/");
-            await Navigation.PushAsync(webPage);
+            string toEmail = "fizmat.original@gmail.com";
+            string emailSubject = "Сообщение об ошибке";
+            string emailBody = "";
+
+            if (string.IsNullOrEmpty(toEmail))
+            {
+                return;
+            }
+
+            Device.OpenUri(new System.Uri(System.String.Format("mailto:{0}?subject={1}&body={2}", toEmail, emailSubject, emailBody)));
+
+        }
+
+        private void CallButton_Clicked(object sender, System.EventArgs e)
+        {
+            string phoneNumber = "87759004626";
+
+            if (string.IsNullOrEmpty(phoneNumber))
+            {
+                return;
+            }
+
+            // Following line used to display given phone number in dialer  
+            Device.OpenUri(new System.Uri(System.String.Format("tel:{0}", phoneNumber)));
         }
     }
 }

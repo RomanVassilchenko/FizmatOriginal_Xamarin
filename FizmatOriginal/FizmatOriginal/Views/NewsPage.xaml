@@ -7,27 +7,29 @@
              mc:Ignorable="d"
              x:Class="FizmatOriginal.Views.NewsPage">
     <ContentPage.Content>
-        <Grid BackgroundColor="#002e56">
+        <Grid>
             <customActivityIndicator:CustomActivityIndicator x:Name="activity_indicator" WidthRequest="50" HeightRequest="50" />
             <!-- ListView-->
-            <ListView x:Name="myList" HasUnevenRows="true">
+            <ListView x:Name="myList" HasUnevenRows="true" SeparatorVisibility="None" BackgroundColor="Black">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Margin="5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="AUTO"/>
-                                    <ColumnDefinition Width="AUTO"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Source="{Binding image}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" WidthRequest="100"/>
-                                <StackLayout Margin="5" Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
-                                    <StackLayout>
-                                        <Label TextColor="White" Text="{Binding title}" FontAttributes="Bold" MaxLines="2"/>
-                                        <Label TextColor="LightGray" Text="{Binding description}" MaxLines="3"/>
+                            <Frame BackgroundColor="#002e56" Margin="0,0,0,3">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="AUTO"/>
+                                        <ColumnDefinition Width="AUTO"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding image}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" WidthRequest="100"/>
+                                    <StackLayout Margin="5" Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+                                        <StackLayout>
+                                            <Label TextColor="White" Text="{Binding title}" FontAttributes="Bold" MaxLines="2"/>
+                                            <Label TextColor="LightGray" Text="{Binding description}" MaxLines="3"/>
+                                        </StackLayout>
+                                        <Label HorizontalOptions="EndAndExpand" TextColor="Gray" Text="{Binding date}" FontAttributes="Italic"/>
                                     </StackLayout>
-                                    <Label HorizontalOptions="EndAndExpand" TextColor="Gray" Text="{Binding date}" FontAttributes="Italic"/>
-                                </StackLayout>
-                            </Grid>
+                                </Grid>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
