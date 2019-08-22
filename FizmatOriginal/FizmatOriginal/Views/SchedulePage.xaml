@@ -67,7 +67,9 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="0">
-                                        <Label TextColor="#DE262C" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Medium" Text="{Binding number}" FontAttributes="Bold"/>
+                                        <Frame HeightRequest="27" WidthRequest="27" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0" BackgroundColor="Maroon">
+                                            <Label Text="{Binding number}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                        </Frame>
                                         <Label TextColor="#FFFFFF" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="10" Text="{Binding times}"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">

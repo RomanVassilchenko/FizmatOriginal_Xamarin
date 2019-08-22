@@ -96,7 +96,7 @@ namespace FizmatOriginal.Views
                             weekclassjson.Add(new Subject
                             {
                                 classnumber = s.classnumber,
-                                number = s.number + ")",
+                                number = s.number,
                                 classroom = s.classroom,
                                 subject = s.subject,
                                 weeknum = s.weeknum,
