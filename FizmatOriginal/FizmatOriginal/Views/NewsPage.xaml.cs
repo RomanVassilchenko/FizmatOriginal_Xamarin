@@ -33,8 +33,11 @@ namespace FizmatOriginal.Views
                 {
                     return;
                 } ((ListView)sender).SelectedItem = null;
-                WebPage webPage = new WebPage(selectedurl);
-                await Navigation.PushAsync(webPage);
+                NavigationPage webPage = new NavigationPage(new WebPage(selectedurl))
+                {
+                    BarBackgroundColor = Color.FromHex("#002e56")
+                };
+                await Navigation.PushModalAsync(webPage);
             };
             OnGetList();
         }
