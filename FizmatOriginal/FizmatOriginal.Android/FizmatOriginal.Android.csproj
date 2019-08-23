@@ -59,7 +59,6 @@
     <MandroidI18n />
     <AndroidDexTool>d8</AndroidDexTool>
     <AndroidEnableMultiDex>false</AndroidEnableMultiDex>
-    <AndroidLinkTool>proguard</AndroidLinkTool>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
