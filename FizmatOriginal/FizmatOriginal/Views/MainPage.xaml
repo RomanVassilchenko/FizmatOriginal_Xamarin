@@ -36,6 +36,7 @@
             </x:Arguments>
         </NavigationPage>
 
+        <!--
         <NavigationPage Title="Помощь">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
@@ -47,6 +48,7 @@
                 <views:HelpPage />
             </x:Arguments>
         </NavigationPage>
+        -->
 
     </TabbedPage.Children>
     

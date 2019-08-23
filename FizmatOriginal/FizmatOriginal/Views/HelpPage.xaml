@@ -6,25 +6,25 @@
              mc:Ignorable="d"
              x:Class="FizmatOriginal.Views.HelpPage">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Horizontal">
             <Frame Margin="15, 0, 15, 0" VerticalOptions="Center">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="SendEmailButton_Clicked" NumberOfTapsRequired="1" />
                 </Frame.GestureRecognizers>
-                <Grid>
-                    <Image HeightRequest="40" WidthRequest="40" Source="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTdUq2zARwHzEU9zJp0UFcRHPN11ZdiwG-4xBzlDbvz-17ivL1" HorizontalOptions="Start"/>
-                    <Label Text="Отправить обращение на почту" FontSize="Medium" TextColor="Black"  FontAttributes="Bold" HorizontalOptions="End" VerticalOptions="Center" HorizontalTextAlignment="Center" />
-                </Grid>
+                <StackLayout Orientation="Vertical">
+                    <Image HeightRequest="40" WidthRequest="40" Source="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTdUq2zARwHzEU9zJp0UFcRHPN11ZdiwG-4xBzlDbvz-17ivL1" HorizontalOptions="Center" VerticalOptions="Start"/>
+                    <Label Text="Отправить обращение на почту" FontSize="Small" TextColor="Black"  FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="End" HorizontalTextAlignment="Center" />
+                </StackLayout>    
             </Frame>
 
             <Frame Margin="15, 0, 15, 0" VerticalOptions="Center">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="CallButton_Clicked" NumberOfTapsRequired="1" />
                 </Frame.GestureRecognizers>
-                <Grid>
-                    <Image HeightRequest="40" WidthRequest="40" Source="https://img2.freepng.ru/20181204/sfr/kisspng-clip-art-mobile-phones-computer-icons-vector-graph-lianxiwomen-svg-png-icon-free-download-292227-5c063858daa062.7614116015439115128955.jpg" HorizontalOptions="Start"/>
-                    <Label Text="Позвонить на номер телефона" FontSize="Medium" TextColor="Black"  FontAttributes="Bold" HorizontalOptions="End" VerticalOptions="Center" HorizontalTextAlignment="Center" />
-                </Grid>
+                <StackLayout Orientation="Vertical">
+                    <Image HeightRequest="40" WidthRequest="40" Source="https://img2.freepng.ru/20181204/sfr/kisspng-clip-art-mobile-phones-computer-icons-vector-graph-lianxiwomen-svg-png-icon-free-download-292227-5c063858daa062.7614116015439115128955.jpg" HorizontalOptions="Center" VerticalOptions="Start"/>
+                    <Label Text="Позвонить на наш номер можно" FontSize="Small" TextColor="Black"  FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="End" HorizontalTextAlignment="Center" />
+                </StackLayout>
             </Frame>
         </StackLayout>
     </ContentPage.Content>
