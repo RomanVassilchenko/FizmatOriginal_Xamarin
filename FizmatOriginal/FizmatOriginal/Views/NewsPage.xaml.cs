@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -79,14 +80,33 @@ namespace FizmatOriginal.Views
                         {
                             datadate = s.date.ToString();
                         }
+                        string stitle, sdesc;
+                        stitle = s.title;
+                        sdesc = s.description;
+
+                        // REGEX 
+                        var pattern = @"&#...;";
+                        var rgx = new Regex(pattern);
+                        stitle = rgx.Replace(stitle, "");
+                        sdesc = rgx.Replace(sdesc, "");
+
+
                         jsonfinal.Add(new News
                         {
-                            title = s.title,
+                            title = stitle,
                             date = datadate,
-                            description = s.description,
+                            description = sdesc,
                             image = s.image,
                             url = s.url
                         });
+                    }
+                    if (jsonfinal.Count == 0)
+                    {
+                        myList.BackgroundColor = Color.FromHex("#012647");
+                    }
+                    else
+                    {
+                        myList.BackgroundColor = Color.Black;
                     }
                     myList.ItemsSource = jsonfinal;
                     int i = json.Count;

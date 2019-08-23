@@ -8,9 +8,8 @@
              x:Class="FizmatOriginal.Views.NewsPage">
     <ContentPage.Content>
         <Grid>
-            <customActivityIndicator:CustomActivityIndicator x:Name="activity_indicator" WidthRequest="50" HeightRequest="50" />
             <!-- ListView-->
-            <ListView x:Name="myList" HasUnevenRows="true" SeparatorVisibility="None" BackgroundColor="Black">
+            <ListView x:Name="myList" HasUnevenRows="true" SeparatorVisibility="None" BackgroundColor="#012647">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -34,6 +33,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <customActivityIndicator:CustomActivityIndicator x:Name="activity_indicator" WidthRequest="50" HeightRequest="50" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
