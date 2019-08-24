@@ -14,6 +14,10 @@ namespace FizmatOriginal.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SchedulePage : ContentPage
     {
+        private string KZURL = "https://script.google.com/macros/s/AKfycbxbCvm8IEiUue9GGIRyn3zxqrTMM4uhznB9bxpe14m7_lpuu3XF/exec";
+        private string RUURL = "https://script.google.com/macros/s/AKfycbxlGnl54weDQqW6Z6FnMLP18lVA8fCtJKKACdTegeRGR3MQOlc/exec";
+
+
         private readonly int heightRowsList = 90;
         private ObservableCollection<Subject> trends = new ObservableCollection<Subject>();
 
@@ -43,34 +47,25 @@ namespace FizmatOriginal.Views
                 } ((ListView)sender).SelectedItem = null;
             };
 
-            OnGetList(LanguageChanged);
+            OnGetList();
         }
 
-        protected async void OnGetList(string Language)
+        protected async void OnGetList()
         {
-            if (Language.ToUpper() == "RU")
-            {
-                Url = "https://script.google.com/macros/s/AKfycbxlGnl54weDQqW6Z6FnMLP18lVA8fCtJKKACdTegeRGR3MQOlc/exec";
-            }
-
-            if (Language.ToUpper() == "KZ")
-            {
-                Url = "https://script.google.com/macros/s/AKfycbxbCvm8IEiUue9GGIRyn3zxqrTMM4uhznB9bxpe14m7_lpuu3XF/exec";
-            }
-
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     activity_indicator.IsRunning = true;
+                    activity_indicator.IsVisible = true;
                     string content = await _client.GetStringAsync(Url);
                     List<Subject> tr = JsonConvert.DeserializeObject<List<Subject>>(content);
                     trends = new ObservableCollection<Subject>(tr);
-                    ChoseClassAndDay(classnumChanged, classletterChanged, numChanged, LanguageChanged);
                     int i = trends.Count;
                     if (i > 0)
                     {
                         activity_indicator.IsRunning = false;
+                        activity_indicator.IsVisible = false;
                     }
                     i = (trends.Count * heightRowsList);
                     activity_indicator.HeightRequest = i;
@@ -80,16 +75,17 @@ namespace FizmatOriginal.Views
                     Crashes.TrackError(ey);
                 }
             }
+            ChoseClassAndDay();
         }
-        private void ChoseClassAndDay(string classnum, string classletter, int num, string Language)
+        private void ChoseClassAndDay()
         {
             List<Subject> json = new List<Subject>(trends);
             List<Subject> weekclassjson = new List<Subject>();
             foreach (Subject s in json)
             {
-                if (s.classnumber == classnum + classletter)
+                if (s.classnumber == classnumChanged + classletterChanged)
                 {
-                    if (s.weeknum == num.ToString())
+                    if (s.weeknum == numChanged.ToString())
                     {
                         if (s.subject != "")
                         {
@@ -109,6 +105,7 @@ namespace FizmatOriginal.Views
             if (weekclassjson.Count == 0)
             {
                 myList.BackgroundColor = Color.FromHex("#012647");
+
             }
             else
             {
@@ -129,6 +126,15 @@ namespace FizmatOriginal.Views
         {
             classletterChanged = (pickerclassletter.Items[pickerclassletter.SelectedIndex]).ToString();
             LanguageChanged = LanguageCheck(classletterChanged);
+            if (LanguageChanged.ToUpper() == "RU")
+            {
+                Url = RUURL;
+            }
+
+            if (LanguageChanged.ToUpper() == "KZ")
+            {
+                Url = KZURL;
+            }
             ShowSchedule();
         }
 
@@ -185,11 +191,11 @@ namespace FizmatOriginal.Views
             if (LanguageChanged != OldLanguage)
             {
                 OldLanguage = LanguageChanged;
-                OnGetList(LanguageChanged);
+                OnGetList();
             }
             else
             {
-                ChoseClassAndDay(classnumChanged, classletterChanged, numChanged, LanguageChanged);
+                ChoseClassAndDay();
             }
         }
 

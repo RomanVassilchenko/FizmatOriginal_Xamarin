@@ -1,6 +1,4 @@
-﻿using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 namespace FizmatOriginal.Views
@@ -12,7 +10,7 @@ namespace FizmatOriginal.Views
         {
             InitializeComponent();
             On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
-            
+
         }
     }
 }
