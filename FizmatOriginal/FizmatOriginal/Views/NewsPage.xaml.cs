@@ -19,7 +19,7 @@ namespace FizmatOriginal.Views
         private readonly int heightRowsList = 90;
         private ObservableCollection<News> trends = new ObservableCollection<News>();
 
-        private readonly string Url = "https://script.google.com/macros/s/AKfycbyi9dWCzKzI1vR5u3f05KtN6rHTutTd1QoTE-4eSyLDT6XdCTQ/exec";
+        private readonly string Url = "https://script.google.com/macros/s/AKfycbyvUKlW6NujurXJ6xtQP88fFSn0pczYjg0IBaTxFgcHirwNmIKa/exec";
         private readonly HttpClient _client = new HttpClient();
 
         public NewsPage()
