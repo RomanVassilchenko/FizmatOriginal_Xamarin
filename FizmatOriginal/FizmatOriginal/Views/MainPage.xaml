@@ -12,18 +12,6 @@
             SelectedTabColor="#A11015">
 
     <TabbedPage.Children>
-        <NavigationPage Title="Расписание">
-            <NavigationPage.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_schedule.png"/>
-                    <On Platform="Android" Value="tab_schedule.png"/>
-                </OnPlatform>
-            </NavigationPage.Icon>
-            <x:Arguments>
-                <views:SchedulePage />
-            </x:Arguments>
-        </NavigationPage>
-        
         <NavigationPage Title="Новости">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
@@ -36,8 +24,21 @@
             </x:Arguments>
         </NavigationPage>
 
-        <!--
-        <NavigationPage Title="Помощь">
+        
+        <NavigationPage Title="Расписание">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_schedule.png"/>
+                    <On Platform="Android" Value="tab_schedule.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:SchedulePage />
+            </x:Arguments>
+        </NavigationPage>
+        
+        
+        <NavigationPage Title="Дополнительно">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_help.png"/>
@@ -48,8 +49,7 @@
                 <views:HelpPage />
             </x:Arguments>
         </NavigationPage>
-        -->
-
+        
     </TabbedPage.Children>
     
 </TabbedPage>

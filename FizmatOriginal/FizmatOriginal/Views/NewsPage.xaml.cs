@@ -74,7 +74,79 @@ namespace FizmatOriginal.Views
         {
             List<News> json = new List<News>(trends);
             List<News> jsonfinal = new List<News>();
-            foreach (News s in json)
+            foreach (News n in json)
+            {
+                string ntitle, ndesc;
+                ntitle = n.title;
+                ndesc = n.description;
+
+                // REGEX 
+                var pattern = @"&#...;";
+                var rgx = new Regex(pattern);
+                ntitle = rgx.Replace(ntitle, " \" ");
+                ndesc = rgx.Replace(ndesc, " \" ");
+
+                pattern = @"&#....;";
+                rgx = new Regex(pattern);
+                ntitle = rgx.Replace(ntitle, "-");
+                ndesc = rgx.Replace(ndesc, "-");
+
+                string ndate = n.date.ToString();
+                if (ndate.Length > 9)
+                {
+                    ndate = ndate[0].ToString() +
+                            ndate[1].ToString() +
+                            ndate[2].ToString() +
+                            ndate[3].ToString() +
+                            ndate[4].ToString() +
+                            ndate[5].ToString() +
+                            ndate[6].ToString() +
+                            ndate[7].ToString() +
+                            ndate[8].ToString() +
+                            ndate[9].ToString();
+
+
+                    string[] dates = ndate.Split(new char[] { '.' });
+                    if (dates[1] == "1" || dates[1] == "01") dates[1] = "Янв";
+                    if (dates[1] == "2" || dates[1] == "02") dates[1] = "Фев";
+                    if (dates[1] == "3" || dates[1] == "03") dates[1] = "Мар";
+                    if (dates[1] == "4" || dates[1] == "04") dates[1] = "Апр";
+                    if (dates[1] == "5" || dates[1] == "05") dates[1] = "Май";
+                    if (dates[1] == "6" || dates[1] == "06") dates[1] = "Июн";
+                    if (dates[1] == "7" || dates[1] == "07") dates[1] = "Июл";
+                    if (dates[1] == "8" || dates[1] == "08") dates[1] = "Авг";
+                    if (dates[1] == "9" || dates[1] == "09") dates[1] = "Сен";
+                    if (dates[1] == "10") dates[1] = "Окт";
+                    if (dates[1] == "11") dates[1] = "Ноя";
+                    if (dates[1] == "12") dates[1] = "Дек";
+                    ndate = dates[0] + " " + dates[1] + " " + dates[2];
+                }
+                if (ndate.Length == 9)
+                {
+                    //01 Апр 19
+                    ndate = ndate[0].ToString() +
+                            ndate[1].ToString() +
+                            ndate[2].ToString() +
+                            ndate[3].ToString() +
+                            ndate[4].ToString() +
+                            ndate[5].ToString() +
+                            ndate[6].ToString() +
+                            "20" +
+                            ndate[7].ToString() +
+                            ndate[8].ToString();
+                }
+
+                jsonfinal.Add(new News
+                {
+                    title = ntitle,
+                    description = ndesc,
+                    date = ndate,
+                    image = n.image,
+                    url = n.url
+                });
+            }
+            /*
+             foreach (News s in json)
             {
                 string datadate;
                 if ((s.date.ToString()).Length > 9)
@@ -99,26 +171,27 @@ namespace FizmatOriginal.Views
                 {
                     datadate = s.date.ToString();
                 }
-                string stitle, sdesc;
-                stitle = s.title;
-                sdesc = s.description;
+                string ntitle, ndesc;
+                ntitle = s.title;
+                ndesc = s.description;
 
                 // REGEX 
                 var pattern = @"&#...;";
                 var rgx = new Regex(pattern);
-                stitle = rgx.Replace(stitle, "");
-                sdesc = rgx.Replace(sdesc, "");
+                ntitle = rgx.Replace(ntitle, "");
+                ndesc = rgx.Replace(ndesc, "");
 
 
                 jsonfinal.Add(new News
                 {
-                    title = stitle,
+                    title = ntitle,
                     date = datadate,
-                    description = sdesc,
+                    description = ndesc,
                     image = s.image,
                     url = s.url
                 });
             }
+             */
             if (jsonfinal.Count == 0)
             {
                 myList.BackgroundColor = Color.FromHex("#012647");

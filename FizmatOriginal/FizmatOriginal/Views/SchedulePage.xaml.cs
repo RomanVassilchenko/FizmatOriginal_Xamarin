@@ -145,33 +145,22 @@ namespace FizmatOriginal.Views
         }
         private int WeekCheck(string day)
         {
-            if (day == "Понедельник")
+            switch (day)
             {
-                return 1;
-            }
-            else if (day == "Вторник")
-            {
-                return 2;
-            }
-            else if (day == "Среда")
-            {
-                return 3;
-            }
-            else if (day == "Четверг")
-            {
-                return 4;
-            }
-            else if (day == "Пятница")
-            {
-                return 5;
-            }
-            else if (day == "Суббота")
-            {
-                return 6;
-            }
-            else
-            {
-                return 1;
+                case "Понедельник":
+                    return 1;
+                case "Вторник":
+                    return 2;
+                case "Среда":
+                    return 3;
+                case "Четверг":
+                    return 4;
+                case "Пятница":
+                    return 5;
+                case "Суббота":
+                    return 6;
+                default:
+                    return 1;
             }
         }
 
