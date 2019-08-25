@@ -31,7 +31,6 @@ namespace FizmatOriginal.Views
         public SchedulePage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
 
             pickerclassnum.SelectedIndex = 5;
             pickerclassletter.SelectedIndex = 2;

@@ -10,7 +10,7 @@ namespace FizmatOriginal.Views
         {
             InitializeComponent();
             On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
-
+            tbdPage.CurrentPage = tbdPage.Children[1];
         }
     }
 }

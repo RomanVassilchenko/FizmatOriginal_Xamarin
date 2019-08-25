@@ -6,56 +6,56 @@
              xmlns:customActivityIndicator="clr-namespace:FizmatOriginal.Models"
              mc:Ignorable="d"
              x:Class="FizmatOriginal.Views.SchedulePage">
-    
+
+    <NavigationPage.TitleView>
+        <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="AUTO"/>
+                <ColumnDefinition Width="AUTO"/>
+                <ColumnDefinition Width="AUTO"/>
+                <ColumnDefinition Width="AUTO"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="logo" HeightRequest="45" WidthRequest="45" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Picker  FontAttributes="Bold" TextColor="White" FontSize="Medium"  Grid.Column="1" x:Name="pickerclassnum" SelectedIndexChanged="Pickerclassnum_SelectedIndexChanged" Title="Параллель">
+                <Picker.Items>
+                    <x:String>5</x:String>
+                    <x:String>6</x:String>
+                    <x:String>7</x:String>
+                    <x:String>8</x:String>
+                    <x:String>9</x:String>
+                    <x:String>10</x:String>
+                    <x:String>11</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Picker FontAttributes="Bold" TextColor="White" FontSize="Medium" Grid.Column="2" Title="Класс" x:Name="pickerclassletter" SelectedIndexChanged="Pickerclassletter_SelectedIndexChanged">
+                <Picker.Items>
+                    <x:String>A</x:String>
+                    <x:String>B</x:String>
+                    <x:String>D</x:String>
+                    <x:String>E</x:String>
+                    <x:String>F</x:String>
+                    <x:String>X</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Picker FontAttributes="Bold" TextColor="White" FontSize="Medium" Grid.Column="3" Title="День недели" x:Name="pickerdayofweek" SelectedIndexChanged="Pickerdayofweek_SelectedIndexChanged">
+                <Picker.Items>
+                    <x:String>Понедельник</x:String>
+                    <x:String>Вторник</x:String>
+                    <x:String>Среда</x:String>
+                    <x:String>Четверг</x:String>
+                    <x:String>Пятница</x:String>
+                    <x:String>Суббота</x:String>
+                </Picker.Items>
+            </Picker>
+        </Grid>
+    </NavigationPage.TitleView>
+
+
     <ContentPage.Content>
         <Grid BackgroundColor="#A11015" HorizontalOptions="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="AUTO"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="AUTO"/>
-                    <ColumnDefinition Width="AUTO"/>
-                    <ColumnDefinition Width="AUTO"/>
-                    <ColumnDefinition Width="AUTO"/>
-                </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" Source="logo" HeightRequest="45" WidthRequest="45" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Picker  FontAttributes="Bold" TextColor="White" FontSize="Medium"  Grid.Column="1" x:Name="pickerclassnum" SelectedIndexChanged="Pickerclassnum_SelectedIndexChanged" Title="Параллель">
-                    <Picker.Items>
-                        <x:String>5</x:String>
-                        <x:String>6</x:String>
-                        <x:String>7</x:String>
-                        <x:String>8</x:String>
-                        <x:String>9</x:String>
-                        <x:String>10</x:String>
-                        <x:String>11</x:String>
-                    </Picker.Items>
-                </Picker>
-
-                <Picker FontAttributes="Bold" TextColor="White" FontSize="Medium" Grid.Column="2" Title="Класс" x:Name="pickerclassletter" SelectedIndexChanged="Pickerclassletter_SelectedIndexChanged">
-                    <Picker.Items>
-                        <x:String>A</x:String>
-                        <x:String>B</x:String>
-                        <x:String>D</x:String>
-                        <x:String>E</x:String>
-                        <x:String>F</x:String>
-                        <x:String>X</x:String>
-                    </Picker.Items>
-                </Picker>
-
-                <Picker FontAttributes="Bold" TextColor="White" FontSize="Medium" Grid.Column="3" Title="День недели" x:Name="pickerdayofweek" SelectedIndexChanged="Pickerdayofweek_SelectedIndexChanged">
-                    <Picker.Items>
-                        <x:String>Понедельник</x:String>
-                        <x:String>Вторник</x:String>
-                        <x:String>Среда</x:String>
-                        <x:String>Четверг</x:String>
-                        <x:String>Пятница</x:String>
-                        <x:String>Суббота</x:String>
-                    </Picker.Items>
-                </Picker>
-            </Grid>
-            <Grid Grid.Row="1">
+            <Grid>
                 <!-- ListView-->
                 <ListView x:Name="myList" HasUnevenRows="true" SeparatorColor="#000000" BackgroundColor="Black" >
                     <ListView.ItemTemplate>

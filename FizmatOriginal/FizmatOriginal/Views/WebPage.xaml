@@ -6,7 +6,7 @@
              xmlns:customActivityIndicator="clr-namespace:FizmatOriginal.Models"
              mc:Ignorable="d"
              x:Class="FizmatOriginal.Views.WebPage">
-
+    
     <ContentPage.Content>
         <Grid>
             <WebView x:Name="WebViewPage" Navigated="WebViewPage_Navigated" Navigating="WebViewPage_Navigating"/>

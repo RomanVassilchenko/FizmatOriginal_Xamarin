@@ -23,7 +23,6 @@ namespace FizmatOriginal.Models
         {
             InitView();
 
-            // Create rotation animation
             _animation = new Animation(v => Rotation
                 = v, 0, 360);
         }

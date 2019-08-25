@@ -9,7 +9,8 @@
             BackgroundColor="#011D35"
             BarTextColor="White"
             UnselectedTabColor="White"
-            SelectedTabColor="#A11015">
+            SelectedTabColor="#A11015"
+            x:Name="tbdPage">
 
     <TabbedPage.Children>
         <NavigationPage Title="Новости">
@@ -24,7 +25,7 @@
             </x:Arguments>
         </NavigationPage>
 
-        
+
         <NavigationPage Title="Расписание">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
@@ -36,8 +37,8 @@
                 <views:SchedulePage />
             </x:Arguments>
         </NavigationPage>
-        
-        
+
+
         <NavigationPage Title="Дополнительно">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
@@ -49,7 +50,7 @@
                 <views:HelpPage />
             </x:Arguments>
         </NavigationPage>
-        
+
     </TabbedPage.Children>
     
 </TabbedPage>
