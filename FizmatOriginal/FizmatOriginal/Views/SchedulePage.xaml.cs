@@ -51,6 +51,7 @@ namespace FizmatOriginal.Views
 
         protected async void OnGetList()
         {
+            lbl_bug.IsVisible = false;
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
@@ -86,9 +87,7 @@ namespace FizmatOriginal.Views
                 {
                     if (s.weeknum == numChanged.ToString())
                     {
-                        if (s.subject != "")
-                        {
-                            weekclassjson.Add(new Subject
+                        weekclassjson.Add(new Subject
                             {
                                 classnumber = s.classnumber,
                                 number = s.number,
@@ -97,21 +96,32 @@ namespace FizmatOriginal.Views
                                 weeknum = s.weeknum,
                                 times = s.times
                             });
-                        }
                     }
                 }
             }
             if (weekclassjson.Count == 0)
             {
                 myList.BackgroundColor = Color.FromHex("#012647");
-
+                if (!activity_indicator.IsVisible)
+                {
+                    lbl_bug.IsVisible = true;
+                }
+                else
+                {
+                    lbl_bug.IsVisible = false;
+                }
             }
             else
             {
+                lbl_bug.IsVisible = false;
                 myList.BackgroundColor = Color.Black;
             }
 
             myList.ItemsSource = weekclassjson;
+            if(weekclassjson.Count == 0)
+            {
+                lbl_bug.IsVisible = true;
+            }
         }
 
 

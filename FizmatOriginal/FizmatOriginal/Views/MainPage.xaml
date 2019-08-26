@@ -47,7 +47,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:HelpPage />
+                <views:AdditionalPage />
             </x:Arguments>
         </NavigationPage>
 
