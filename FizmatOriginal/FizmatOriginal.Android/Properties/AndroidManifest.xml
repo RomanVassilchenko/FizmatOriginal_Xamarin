@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="28" android:versionName="0.7.1" package="com.fizmatoriginal" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="29" android:versionName="0.8.0" package="com.fizmatoriginal" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="23" android:targetSdkVersion="28" />
 	<!-- app center push - START -->
-	<permission android:protectionLevel="signature" android:name="${applicationId}.permission.C2D_MESSAGE" />
-	<uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
+	<permission android:name="com.fizmatoriginal.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+	<uses-permission android:name="com.fizmatoriginal.permission.C2D_MESSAGE" />
 	<!-- app center push - END -->
 	<application android:label="Fizmat Original" android:icon="@mipmap/ic_launcher">
 		<!-- Set default notification icon and color. -->

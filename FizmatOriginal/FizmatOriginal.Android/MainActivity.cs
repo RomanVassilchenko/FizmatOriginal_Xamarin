@@ -2,6 +2,7 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Com.OneSignal;
 
 namespace FizmatOriginal.Droid
 {
@@ -15,7 +16,8 @@ namespace FizmatOriginal.Droid
 
             base.OnCreate(savedInstanceState);
 
-
+            OneSignal.Current.StartInit("7a0f359f-d4fd-456c-a187-7a6a240f88f4")
+                  .EndInit();
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

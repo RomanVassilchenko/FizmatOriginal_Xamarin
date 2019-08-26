@@ -1,4 +1,5 @@
 ﻿
+using Com.OneSignal;
 using Foundation;
 using UIKit;
 
@@ -21,7 +22,8 @@ namespace FizmatOriginal.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
-
+            OneSignal.Current.StartInit("7a0f359f-d4fd-456c-a187-7a6a240f88f4")
+                             .EndInit();
             return base.FinishedLaunching(app, options);
         }
     }

@@ -1,4 +1,5 @@
-﻿using FizmatOriginal.Views;
+﻿using Com.OneSignal;
+using FizmatOriginal.Views;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Push;
@@ -18,7 +19,8 @@ namespace FizmatOriginal
         {
             Microsoft.AppCenter.AppCenter.Start("257a45d8-3a75-4e82-9d9b-554fab395414",
                    typeof(Analytics), typeof(Crashes));
-            Microsoft.AppCenter.AppCenter.Start("257a45d8-3a75-4e82-9d9b-554fab395414", typeof(Push));
+            OneSignal.Current.StartInit("7a0f359f-d4fd-456c-a187-7a6a240f88f4")
+                  .EndInit();
         }
 
         protected override void OnSleep()
