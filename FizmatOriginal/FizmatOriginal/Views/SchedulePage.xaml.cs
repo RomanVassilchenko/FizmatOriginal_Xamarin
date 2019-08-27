@@ -88,14 +88,14 @@ namespace FizmatOriginal.Views
                     if (s.weeknum == numChanged.ToString())
                     {
                         weekclassjson.Add(new Subject
-                            {
-                                classnumber = s.classnumber,
-                                number = s.number,
-                                classroom = s.classroom,
-                                subject = s.subject,
-                                weeknum = s.weeknum,
-                                times = s.times
-                            });
+                        {
+                            classnumber = s.classnumber,
+                            number = s.number,
+                            classroom = s.classroom,
+                            subject = s.subject,
+                            weeknum = s.weeknum,
+                            times = s.times
+                        });
                     }
                 }
             }
@@ -118,7 +118,7 @@ namespace FizmatOriginal.Views
             }
 
             myList.ItemsSource = weekclassjson;
-            if(weekclassjson.Count == 0)
+            if (weekclassjson.Count == 0)
             {
                 lbl_bug.IsVisible = true;
             }

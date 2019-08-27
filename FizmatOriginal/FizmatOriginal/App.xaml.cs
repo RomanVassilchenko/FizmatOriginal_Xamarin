@@ -2,7 +2,6 @@
 using FizmatOriginal.Views;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-using Microsoft.AppCenter.Push;
 using Xamarin.Forms;
 
 namespace FizmatOriginal
@@ -13,14 +12,16 @@ namespace FizmatOriginal
         {
             InitializeComponent();
             MainPage = new MainPage();
+            OneSignal.Current.StartInit("22d3ebfe-fc04-4004-bed3-0a42c316c55c")
+                  .EndInit();
         }
 
         protected override void OnStart()
         {
             Microsoft.AppCenter.AppCenter.Start("257a45d8-3a75-4e82-9d9b-554fab395414",
                    typeof(Analytics), typeof(Crashes));
-            OneSignal.Current.StartInit("22d3ebfe-fc04-4004-bed3-0a42c316c55c")
-                  .EndInit();
+
+            OneSignal.Current.RegisterForPushNotifications();
         }
 
         protected override void OnSleep()
