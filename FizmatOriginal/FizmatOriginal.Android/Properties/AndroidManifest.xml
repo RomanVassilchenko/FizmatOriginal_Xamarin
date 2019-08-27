@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="30" android:versionName="0.8.1" package="com.fizmatoriginal" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="31" android:versionName="0.8.2" package="com.fizmatoriginal" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="23" android:targetSdkVersion="28" />
 	<!-- app center push - START -->
 	<permission android:name="com.fizmatoriginal.permission.C2D_MESSAGE" android:protectionLevel="signature" />

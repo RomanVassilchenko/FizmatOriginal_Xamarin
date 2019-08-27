@@ -16,7 +16,7 @@ namespace FizmatOriginal.Droid
 
             base.OnCreate(savedInstanceState);
 
-            OneSignal.Current.StartInit("7a0f359f-d4fd-456c-a187-7a6a240f88f4")
+            OneSignal.Current.StartInit("22d3ebfe-fc04-4004-bed3-0a42c316c55c")
                   .EndInit();
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

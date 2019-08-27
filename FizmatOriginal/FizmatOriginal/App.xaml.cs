@@ -19,7 +19,7 @@ namespace FizmatOriginal
         {
             Microsoft.AppCenter.AppCenter.Start("257a45d8-3a75-4e82-9d9b-554fab395414",
                    typeof(Analytics), typeof(Crashes));
-            OneSignal.Current.StartInit("7a0f359f-d4fd-456c-a187-7a6a240f88f4")
+            OneSignal.Current.StartInit("22d3ebfe-fc04-4004-bed3-0a42c316c55c")
                   .EndInit();
         }
 
