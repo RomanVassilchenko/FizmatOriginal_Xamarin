@@ -8263,10 +8263,13 @@ namespace FizmatOriginal.Droid
 			public const int path_password_strike_through = 2131624038;
 			
 			// aapt resource value: 0x7F0E0067
-			public const int search_menu_title = 2131624039;
+			public const int project_id = 2131624039;
 			
 			// aapt resource value: 0x7F0E0068
-			public const int status_bar_notification_info_overflow = 2131624040;
+			public const int search_menu_title = 2131624040;
+			
+			// aapt resource value: 0x7F0E0069
+			public const int status_bar_notification_info_overflow = 2131624041;
 			
 			static String()
 			{

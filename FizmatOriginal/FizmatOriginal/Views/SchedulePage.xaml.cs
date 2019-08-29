@@ -21,8 +21,8 @@ namespace FizmatOriginal.Views
         private readonly int heightRowsList = 90;
         private ObservableCollection<Subject> trends = new ObservableCollection<Subject>();
 
-        public string classnumChanged = "10", classletterChanged = "D", LanguageChanged = "RU", OldLanguage = "RU";
-        public int numChanged = 1;
+        public string classnumChanged = "", classletterChanged = "", LanguageChanged = "", OldLanguage = "";
+        public int numChanged = 0;
 
         private string Url = "https://script.google.com/macros/s/AKfycbxlGnl54weDQqW6Z6FnMLP18lVA8fCtJKKACdTegeRGR3MQOlc/exec";
 
@@ -32,9 +32,68 @@ namespace FizmatOriginal.Views
         {
             InitializeComponent();
 
-            pickerclassnum.SelectedIndex = 5;
-            pickerclassletter.SelectedIndex = 2;
-            pickerdayofweek.SelectedIndex = 0;
+            if (!Application.Current.Properties.ContainsKey("class_key"))
+            {
+                pickerclassnum.SelectedIndex = 5;
+            }
+            else
+            {
+                try
+                {
+                    pickerclassnum.SelectedIndex = int.Parse(Application.Current.Properties["class_key"].ToString());
+                }
+                catch
+                {
+                    pickerclassnum.SelectedIndex = 0;
+                }
+            }
+            classnumChanged = (pickerclassnum.Items[pickerclassnum.SelectedIndex]).ToString();
+
+
+            if (!Application.Current.Properties.ContainsKey("letter_key"))
+            {
+                pickerclassletter.SelectedIndex = 2;
+            }
+            else
+            {
+                try
+                {
+                    pickerclassletter.SelectedIndex = int.Parse(Application.Current.Properties["letter_key"].ToString());
+                }
+                catch
+                {
+                    pickerclassletter.SelectedIndex = 0;
+                }
+            }
+            classletterChanged = (pickerclassletter.Items[pickerclassletter.SelectedIndex]).ToString();
+            LanguageChanged = LanguageCheck(classletterChanged);
+            if (LanguageChanged.ToUpper() == "RU")
+            {
+                Url = RUURL;
+            }
+
+            if (LanguageChanged.ToUpper() == "KZ")
+            {
+                Url = KZURL;
+            }
+
+
+            if (!Application.Current.Properties.ContainsKey("day_key"))
+            {
+                pickerdayofweek.SelectedIndex = 0;
+            }
+            else
+            {
+                try
+                {
+                    pickerdayofweek.SelectedIndex = int.Parse(Application.Current.Properties["day_key"].ToString());
+                }
+                catch
+                {
+                    pickerdayofweek.SelectedIndex = 0;
+                }
+            }
+            numChanged = WeekCheck(pickerdayofweek.Items[pickerdayofweek.SelectedIndex]);
 
 
 
@@ -127,12 +186,14 @@ namespace FizmatOriginal.Views
 
         private void Pickerclassnum_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Application.Current.Properties["class_key"] = pickerclassnum.SelectedIndex;
             classnumChanged = (pickerclassnum.Items[pickerclassnum.SelectedIndex]).ToString();
             ShowSchedule();
         }
 
         private void Pickerclassletter_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Application.Current.Properties["letter_key"] = pickerclassletter.SelectedIndex;
             classletterChanged = (pickerclassletter.Items[pickerclassletter.SelectedIndex]).ToString();
             LanguageChanged = LanguageCheck(classletterChanged);
             if (LanguageChanged.ToUpper() == "RU")
@@ -149,6 +210,7 @@ namespace FizmatOriginal.Views
 
         private void Pickerdayofweek_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Application.Current.Properties["day_key"] = pickerdayofweek.SelectedIndex;
             numChanged = WeekCheck(pickerdayofweek.Items[pickerdayofweek.SelectedIndex]);
             ShowSchedule();
         }
