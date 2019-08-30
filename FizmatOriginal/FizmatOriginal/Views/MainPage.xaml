@@ -42,8 +42,8 @@
         <NavigationPage Title="Дополнительно">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_help.png"/>
-                    <On Platform="Android" Value="tab_help.png"/>
+                    <On Platform="iOS" Value="tab_more.png"/>
+                    <On Platform="Android" Value="tab_more.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>

@@ -205,4 +205,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\tab_schedule%402x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_more.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_diary.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon.png" />
+  </ItemGroup>
 </Project>
