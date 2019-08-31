@@ -11,7 +11,14 @@ namespace FizmatOriginal
         public App()
         {
             InitializeComponent();
-            MainPage = new MainPage();
+            if (!Application.Current.Properties.ContainsKey("login_key"))
+            {
+                MainPage = new LoginPage();
+            }
+            else
+            {
+                MainPage = new MainPage();
+            }
             OneSignal.Current.StartInit("22d3ebfe-fc04-4004-bed3-0a42c316c55c")
                   .EndInit();
         }
