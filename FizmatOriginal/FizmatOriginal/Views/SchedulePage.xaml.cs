@@ -34,7 +34,7 @@ namespace FizmatOriginal.Views
 
             if (!Application.Current.Properties.ContainsKey("class_key"))
             {
-                pickerclassnum.SelectedIndex = 5;
+                pickerclassnum.SelectedIndex = 0;
             }
             else
             {
@@ -52,7 +52,7 @@ namespace FizmatOriginal.Views
 
             if (!Application.Current.Properties.ContainsKey("letter_key"))
             {
-                pickerclassletter.SelectedIndex = 2;
+                pickerclassletter.SelectedIndex = 0;
             }
             else
             {

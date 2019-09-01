@@ -10,13 +10,13 @@ namespace FizmatOriginal.Views
         public AdditionalPage()
         {
             InitializeComponent();
-            menuList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
-            {
-                if (e.Item == null)
-                {
-                    return;
-                } ((ListView)sender).SelectedItem = null;
-            };
+        }
+
+        private async void Btn_exit_Clicked(object sender, System.EventArgs e)
+        {
+            Application.Current.Properties["login_key"] = "";
+            Application.Current.Properties["password_key"] = "";
+            App.Current.MainPage = new LoginPage();
         }
     }
 }

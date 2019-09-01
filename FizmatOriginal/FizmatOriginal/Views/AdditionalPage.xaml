@@ -4,38 +4,23 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="FizmatOriginal.Views.AdditionalPage">
+             x:Class="FizmatOriginal.Views.AdditionalPage"
+             Visual="Material">
 
     <NavigationPage.TitleView>
-        <Label Text="В разработке" HorizontalTextAlignment="Center" TextColor="White"
-               HorizontalOptions="Center" FontSize="Large" />
+        <Label Text="Настройки" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" FontAttributes="Bold" FontSize="Large"/>
     </NavigationPage.TitleView>
-    
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <x:Array x:Key="menu" Type="{x:Type x:String}">
-                <x:String>Большие обновления:</x:String>
-
-                <x:String>Дневник</x:String>
-                <x:String>Домашнее задание</x:String>
-                <x:String>Список класса</x:String>
-                <x:String>Контактная информация</x:String>
-                <x:String>Fizmat Radio</x:String>
-
-                <x:String></x:String>
-                <x:String>Мелкие обновления:</x:String>
-
-                <x:String>Изменение дизайна в Расписании</x:String>
-                <x:String>Авторизация</x:String>
-                <x:String>Сохранение выбранного дня в Расписании</x:String>
-                <x:String>Офлайн режим</x:String>
-
-            </x:Array>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <StackLayout>
-        <ListView x:Name="menuList" ItemsSource="{StaticResource menu}"
-                  HorizontalOptions="Center" VerticalOptions="Center"/>
-        
-    </StackLayout>
+    <ContentPage.Content>
+        <Grid BackgroundColor="#012647">
+            <StackLayout>
+                <Label HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Margin="10" Text="Пока доступно только РФМШ Астаны" TextColor="White" FontSize="Medium" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" >
+                    <Label FontSize="Medium" Text="Fizmat Astana" TextColor="White" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center"/>
+                    <Switch HorizontalOptions="CenterAndExpand" OnColor="#A11015" IsEnabled="False"/>
+                    <Label FontSize="Medium" Text="Fizmat Almaty" TextColor="White" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center"/>
+                </StackLayout>
+            </StackLayout>
+            <Button Text="Выйти" FontSize="Medium" FontAttributes="Bold" x:Name="btn_exit" TextColor="White" Clicked="Btn_exit_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" BackgroundColor="#A11015"/>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>

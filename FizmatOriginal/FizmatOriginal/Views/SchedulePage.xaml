@@ -18,6 +18,10 @@
                 </Grid.ColumnDefinitions>
                 <Picker HorizontalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="White" FontSize="Medium"  Grid.Column="1" x:Name="pickerclassnum" SelectedIndexChanged="Pickerclassnum_SelectedIndexChanged" Title="Параллель">
                     <Picker.Items>
+                        <x:String>1</x:String>
+                        <x:String>2</x:String>
+                        <x:String>3</x:String>
+                        <x:String>4</x:String>
                         <x:String>5</x:String>
                         <x:String>6</x:String>
                         <x:String>7</x:String>
@@ -34,8 +38,10 @@
                         <x:String>B</x:String>
                         <x:String>D</x:String>
                         <x:String>E</x:String>
+                        <x:String>G</x:String>
                         <x:String>F</x:String>
                         <x:String>X</x:String>
+                        <x:String>Z </x:String>
                     </Picker.Items>
                 </Picker>
 
