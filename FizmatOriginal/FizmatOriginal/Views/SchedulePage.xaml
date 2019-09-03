@@ -91,7 +91,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <customActivityIndicator:CustomActivityIndicator x:Name="activity_indicator" WidthRequest="60" HeightRequest="60" />
-                <Label x:Name="lbl_bug" Text="Oops! Произошла ошибка, либо класса не существует. Попробуйте еще раз." FontSize="Medium" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False"></Label>
+                <Label x:Name="lbl_bug" Text="Oops! Произошла ошибка! Класса не существует или сегодня нет уроков. Попробуйте еще раз." FontSize="Medium" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False"></Label>
             </Grid>
         </Grid>
     </ContentPage.Content>

@@ -1,5 +1,4 @@
-﻿
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace FizmatOriginal.Views
@@ -12,7 +11,7 @@ namespace FizmatOriginal.Views
             InitializeComponent();
         }
 
-        private async void Btn_exit_Clicked(object sender, System.EventArgs e)
+        private void Btn_exit_Clicked(object sender, System.EventArgs e)
         {
             Application.Current.Properties["login_key"] = "";
             Application.Current.Properties["password_key"] = "";

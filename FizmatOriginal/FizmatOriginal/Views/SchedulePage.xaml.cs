@@ -17,6 +17,9 @@ namespace FizmatOriginal.Views
         private string KZURL = "https://script.google.com/macros/s/AKfycbxbCvm8IEiUue9GGIRyn3zxqrTMM4uhznB9bxpe14m7_lpuu3XF/exec";
         private string RUURL = "https://script.google.com/macros/s/AKfycbxlGnl54weDQqW6Z6FnMLP18lVA8fCtJKKACdTegeRGR3MQOlc/exec";
 
+        //TODO add AP and Primary Url
+        private string APURL = "https://script.google.com/macros/s/AKfycbw89p73cpC0U-PEf6-Qt28mVWxmCc1osuNyslgX47z20O4zX00/exec";
+        private string PRIMURL = "https://script.google.com/macros/s/AKfycbw89p73cpC0U-PEf6-Qt28mVWxmCc1osuNyslgX47z20O4zX00/exec";
 
         private readonly int heightRowsList = 90;
         private ObservableCollection<Subject> trends = new ObservableCollection<Subject>();
@@ -66,7 +69,7 @@ namespace FizmatOriginal.Views
                 }
             }
             classletterChanged = (pickerclassletter.Items[pickerclassletter.SelectedIndex]).ToString();
-            LanguageChanged = LanguageCheck(classletterChanged);
+            LanguageChanged = LanguageCheck(classletterChanged, classnumChanged);
             if (LanguageChanged.ToUpper() == "RU")
             {
                 Url = RUURL;
@@ -76,6 +79,17 @@ namespace FizmatOriginal.Views
             {
                 Url = KZURL;
             }
+
+            if(LanguageChanged.ToUpper() == "AP")
+            {
+                Url = APURL;
+            }
+
+            if(LanguageChanged.ToUpper() == "PR")
+            {
+                Url = PRIMURL;
+            }
+
 
 
             if (!Application.Current.Properties.ContainsKey("day_key"))
@@ -195,7 +209,7 @@ namespace FizmatOriginal.Views
         {
             Application.Current.Properties["letter_key"] = pickerclassletter.SelectedIndex;
             classletterChanged = (pickerclassletter.Items[pickerclassletter.SelectedIndex]).ToString();
-            LanguageChanged = LanguageCheck(classletterChanged);
+            LanguageChanged = LanguageCheck(classletterChanged, classnumChanged);
             if (LanguageChanged.ToUpper() == "RU")
             {
                 Url = RUURL;
@@ -204,6 +218,16 @@ namespace FizmatOriginal.Views
             if (LanguageChanged.ToUpper() == "KZ")
             {
                 Url = KZURL;
+            }
+
+            if (LanguageChanged.ToUpper() == "AP")
+            {
+                Url = APURL;
+            }
+
+            if (LanguageChanged.ToUpper() == "PR")
+            {
+                Url = PRIMURL;
             }
             ShowSchedule();
         }
@@ -235,12 +259,23 @@ namespace FizmatOriginal.Views
             }
         }
 
-        private string LanguageCheck(string letter)
+        private string LanguageCheck(string letter, string num)
         {
+            int n;
+            if (int.TryParse(num, out n) && n < 5)
+            {
+                return "PR";
+            }
+
             if (letter == "A" || letter == "B")
             {
                 return "KZ";
             }
+            if (letter == "X" || letter == "Z")
+            {
+                return "AP";
+            }
+            
             else
             {
                 return "RU";
