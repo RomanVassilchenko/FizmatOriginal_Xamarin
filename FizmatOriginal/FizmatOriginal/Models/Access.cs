@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FizmatOriginal.Models
+﻿namespace FizmatOriginal.Models
 {
     class Access
     {

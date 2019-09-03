@@ -16,9 +16,7 @@ namespace FizmatOriginal.Views
     {
         private string KZURL = "https://script.google.com/macros/s/AKfycbxbCvm8IEiUue9GGIRyn3zxqrTMM4uhznB9bxpe14m7_lpuu3XF/exec";
         private string RUURL = "https://script.google.com/macros/s/AKfycbxlGnl54weDQqW6Z6FnMLP18lVA8fCtJKKACdTegeRGR3MQOlc/exec";
-
-        //TODO add AP and Primary Url
-        private string APURL = "https://script.google.com/macros/s/AKfycbw89p73cpC0U-PEf6-Qt28mVWxmCc1osuNyslgX47z20O4zX00/exec";
+        private string APURL = "https://script.google.com/macros/s/AKfycbzuELBlcQh2vSkEv1vbCUCG60koY6PY7v4J_sa7i7iGxUJX9Yo1/exec";
         private string PRIMURL = "https://script.google.com/macros/s/AKfycbw89p73cpC0U-PEf6-Qt28mVWxmCc1osuNyslgX47z20O4zX00/exec";
 
         private readonly int heightRowsList = 90;
@@ -80,12 +78,12 @@ namespace FizmatOriginal.Views
                 Url = KZURL;
             }
 
-            if(LanguageChanged.ToUpper() == "AP")
+            if (LanguageChanged.ToUpper() == "AP")
             {
                 Url = APURL;
             }
 
-            if(LanguageChanged.ToUpper() == "PR")
+            if (LanguageChanged.ToUpper() == "PR")
             {
                 Url = PRIMURL;
             }
@@ -275,7 +273,7 @@ namespace FizmatOriginal.Views
             {
                 return "AP";
             }
-            
+
             else
             {
                 return "RU";
