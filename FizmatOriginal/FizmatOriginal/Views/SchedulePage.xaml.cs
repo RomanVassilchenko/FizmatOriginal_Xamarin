@@ -200,6 +200,7 @@ namespace FizmatOriginal.Views
         {
             Application.Current.Properties["class_key"] = pickerclassnum.SelectedIndex;
             classnumChanged = (pickerclassnum.Items[pickerclassnum.SelectedIndex]).ToString();
+            LanguageUrlChange();
             ShowSchedule();
         }
 
@@ -207,6 +208,20 @@ namespace FizmatOriginal.Views
         {
             Application.Current.Properties["letter_key"] = pickerclassletter.SelectedIndex;
             classletterChanged = (pickerclassletter.Items[pickerclassletter.SelectedIndex]).ToString();
+            LanguageUrlChange();
+            ShowSchedule();
+        }
+
+        private void Pickerdayofweek_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Application.Current.Properties["day_key"] = pickerdayofweek.SelectedIndex;
+            numChanged = WeekCheck(pickerdayofweek.Items[pickerdayofweek.SelectedIndex]);
+            LanguageUrlChange();
+            ShowSchedule();
+        }
+
+        private void LanguageUrlChange()
+        {
             LanguageChanged = LanguageCheck(classletterChanged, classnumChanged);
             if (LanguageChanged.ToUpper() == "RU")
             {
@@ -227,14 +242,6 @@ namespace FizmatOriginal.Views
             {
                 Url = PRIMURL;
             }
-            ShowSchedule();
-        }
-
-        private void Pickerdayofweek_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Application.Current.Properties["day_key"] = pickerdayofweek.SelectedIndex;
-            numChanged = WeekCheck(pickerdayofweek.Items[pickerdayofweek.SelectedIndex]);
-            ShowSchedule();
         }
         private int WeekCheck(string day)
         {
