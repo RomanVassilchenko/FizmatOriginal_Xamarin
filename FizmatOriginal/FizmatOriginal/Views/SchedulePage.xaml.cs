@@ -22,7 +22,7 @@ namespace FizmatOriginal.Views
         private readonly int heightRowsList = 90;
         private ObservableCollection<Subject> trends = new ObservableCollection<Subject>();
 
-        public string classnumChanged = "", classletterChanged = "", LanguageChanged = "", OldLanguage = "";
+        public string classnumChanged = "10", classletterChanged = "D", LanguageChanged = "RU", OldLanguage = "RU";
         public int numChanged = 0;
 
         private string Url = "https://script.google.com/macros/s/AKfycbxlGnl54weDQqW6Z6FnMLP18lVA8fCtJKKACdTegeRGR3MQOlc/exec";
@@ -67,26 +67,7 @@ namespace FizmatOriginal.Views
                 }
             }
             classletterChanged = (pickerclassletter.Items[pickerclassletter.SelectedIndex]).ToString();
-            LanguageChanged = LanguageCheck(classletterChanged, classnumChanged);
-            if (LanguageChanged.ToUpper() == "RU")
-            {
-                Url = RUURL;
-            }
-
-            if (LanguageChanged.ToUpper() == "KZ")
-            {
-                Url = KZURL;
-            }
-
-            if (LanguageChanged.ToUpper() == "AP")
-            {
-                Url = APURL;
-            }
-
-            if (LanguageChanged.ToUpper() == "PR")
-            {
-                Url = PRIMURL;
-            }
+            LanguageUrlChange();
 
 
 
@@ -175,7 +156,7 @@ namespace FizmatOriginal.Views
                 myList.BackgroundColor = Color.FromHex("#012647");
                 if (!activity_indicator.IsVisible)
                 {
-                    lbl_bug.IsVisible = true;
+                    //lbl_bug.IsVisible = true;
                 }
                 else
                 {
@@ -191,7 +172,7 @@ namespace FizmatOriginal.Views
             myList.ItemsSource = weekclassjson;
             if (weekclassjson.Count == 0)
             {
-                lbl_bug.IsVisible = true;
+                //lbl_bug.IsVisible = true;
             }
         }
 
@@ -271,12 +252,12 @@ namespace FizmatOriginal.Views
             {
                 return "PR";
             }
-
-            if (letter == "A" || letter == "B")
+            //Латиница + Кирилица
+            else if (letter == "A" || letter == "А" || letter == "B" || letter == "В")
             {
                 return "KZ";
             }
-            if (letter == "X" || letter == "Z")
+            else if (letter == "X" || letter == "Z")
             {
                 return "AP";
             }
