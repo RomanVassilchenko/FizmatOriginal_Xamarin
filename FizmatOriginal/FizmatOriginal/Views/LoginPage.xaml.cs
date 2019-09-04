@@ -21,12 +21,13 @@ namespace FizmatOriginal.Views
 
 
         private string Url = "https://script.google.com/macros/s/AKfycbwVtdW3WNTkWaYh7wjNZqRv2zK0Ix-vRgm4uwPAfpzEmwpElWcc/exec";
-
+        private bool isLoaded = false;
         private readonly HttpClient _client = new HttpClient();
 
         public LoginPage()
         {
             InitializeComponent();
+            btn_login.TextColor = Color.Gray;
             activity_indicator.IsRunning = true;
             passwordLoading();
 
@@ -77,7 +78,10 @@ namespace FizmatOriginal.Views
                     int i = trends.Count;
                     if (i > 0)
                     {
-                        btn_login.IsEnabled = true;
+                        isLoaded = true;
+                        activity_indicator_loading.IsVisible = false;
+                        activity_indicator_loading.IsRunning = false;
+                        btn_login.TextColor = Color.White;
                     }
                 }
                 catch (Exception ey)
@@ -88,6 +92,11 @@ namespace FizmatOriginal.Views
         }
         public async void passwordCheck()
         {
+            if (!isLoaded)
+            {
+                await DisplayAlert("Слабый интернет или нет сигнала", "Попробуйте еще раз", "Ок");
+            }
+
             List<Access> json = new List<Access>(trends);
             List<Access> weekclassjson = new List<Access>();
 

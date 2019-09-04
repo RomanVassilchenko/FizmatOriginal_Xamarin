@@ -217,4 +217,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rotatewhite.png" />
+  </ItemGroup>
 </Project>

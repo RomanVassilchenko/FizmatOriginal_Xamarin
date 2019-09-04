@@ -10,14 +10,16 @@
         <Grid BackgroundColor="#012647">
             <StackLayout VerticalOptions="Center" Visual="Material">
                 <StackLayout Margin="0,0,0,30" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                    <customActivityIndicator:CustomActivityIndicator x:Name="activity_indicator" WidthRequest="60" HeightRequest="60" />                    <Label Text="Fizmat Original" TextColor="White" FontAttributes="Bold" FontSize="30" VerticalOptions="CenterAndExpand"/>
+                    <customActivityIndicator:CustomWhiteActivityIndicator x:Name="activity_indicator" WidthRequest="60" HeightRequest="60" />
+                    <Label Text="Fizmat Original" TextColor="White" FontAttributes="Bold" FontSize="30" VerticalOptions="CenterAndExpand"/>
                 </StackLayout>
                 <StackLayout Padding="50" Spacing="40">
                     <Entry x:Name="entry_login" TextColor="White" PlaceholderColor="Gray" Placeholder="Логин"></Entry>
                     <Entry x:Name="entry_password" TextColor="White" PlaceholderColor="Gray" Placeholder="Пароль" IsPassword="True"></Entry>
-                    <Button IsEnabled="False" x:Name="btn_login" BackgroundColor="#A11015" TextColor="White" FontSize="25" FontAttributes="Bold" Text="Войти" Margin="0,40,0,0"/>
+                    <Button x:Name="btn_login" BackgroundColor="#A11015" TextColor="White" FontSize="25" FontAttributes="Bold" Text="Войти" Margin="0,40,0,0"/>
                 </StackLayout>
             </StackLayout>
+            <customActivityIndicator:CustomActivityIndicator IsVisible="False" x:Name="activity_indicator_loading" WidthRequest="60" HeightRequest="60" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
