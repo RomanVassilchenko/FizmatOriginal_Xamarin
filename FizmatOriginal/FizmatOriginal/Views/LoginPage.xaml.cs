@@ -98,7 +98,6 @@ namespace FizmatOriginal.Views
             }
 
             List<Access> json = new List<Access>(trends);
-            List<Access> weekclassjson = new List<Access>();
 
             if (entry_login.Text != "")
             {

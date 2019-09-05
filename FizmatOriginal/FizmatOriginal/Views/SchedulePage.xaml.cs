@@ -104,29 +104,48 @@ namespace FizmatOriginal.Views
         protected async void OnGetList()
         {
             lbl_bug.IsVisible = false;
+            string content = "";
+            activity_indicator.IsRunning = true;
+            activity_indicator.IsVisible = true;
+
             if (CrossConnectivity.Current.IsConnected)
             {
+                lbl_bug.Text = "Oops! Произошла ошибка! Класса не существует или сегодня нет уроков. Попробуйте еще раз.";
                 try
                 {
-                    activity_indicator.IsRunning = true;
-                    activity_indicator.IsVisible = true;
-                    string content = await _client.GetStringAsync(Url);
-                    List<Subject> tr = JsonConvert.DeserializeObject<List<Subject>>(content);
-                    trends = new ObservableCollection<Subject>(tr);
-                    int i = trends.Count;
-                    if (i > 0)
-                    {
-                        activity_indicator.IsRunning = false;
-                        activity_indicator.IsVisible = false;
-                    }
-                    i = (trends.Count * heightRowsList);
-                    activity_indicator.HeightRequest = i;
+                    content = await _client.GetStringAsync(Url);
+                    Application.Current.Properties["schedule_content_key"] = content;
                 }
                 catch (Exception ey)
                 {
                     Crashes.TrackError(ey);
                 }
             }
+            else
+            {
+
+                lbl_bug.Text = "Oops. Нет подключения к интерету. Попробуйте еще раз";
+                if (Application.Current.Properties.ContainsKey("schedule_content_key"))
+                {
+                    try
+                    {
+                        content = Application.Current.Properties["schedule_content_key"].ToString();
+                    }
+                    catch
+                    {
+                    }
+                }
+            }
+            List<Subject> tr = JsonConvert.DeserializeObject<List<Subject>>(content);
+            trends = new ObservableCollection<Subject>(tr);
+            int i = trends.Count;
+            if (i > 0)
+            {
+                activity_indicator.IsRunning = false;
+                activity_indicator.IsVisible = false;
+            }
+            i = (trends.Count * heightRowsList);
+            activity_indicator.HeightRequest = i;
             ChoseClassAndDay();
         }
         private void ChoseClassAndDay()
@@ -156,7 +175,7 @@ namespace FizmatOriginal.Views
                 myList.BackgroundColor = Color.FromHex("#012647");
                 if (!activity_indicator.IsVisible)
                 {
-                    //lbl_bug.IsVisible = true;
+                    lbl_bug.IsVisible = true;
                 }
                 else
                 {
@@ -172,7 +191,7 @@ namespace FizmatOriginal.Views
             myList.ItemsSource = weekclassjson;
             if (weekclassjson.Count == 0)
             {
-                //lbl_bug.IsVisible = true;
+                lbl_bug.IsVisible = true;
             }
         }
 

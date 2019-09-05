@@ -28,7 +28,7 @@ namespace FizmatOriginal.Views
             NavigationPage.SetHasNavigationBar(this, false);
             myList.ItemTapped += async (object sender, ItemTappedEventArgs e) =>
             {
-                News data = (News)(e.Item);
+                News data = (News)e.Item;
                 selectedurl = data.url;
                 if (e.Item == null)
                 {
@@ -42,29 +42,47 @@ namespace FizmatOriginal.Views
 
         protected async void OnGetList()
         {
+            string content = "";
+
+            activity_indicator.IsRunning = true;
+            activity_indicator.IsVisible = true;
+
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
-                    activity_indicator.IsRunning = true;
-                    activity_indicator.IsVisible = true;
-                    string content = await _client.GetStringAsync(Url);
-                    List<News> tr = JsonConvert.DeserializeObject<List<News>>(content);
-                    trends = new ObservableCollection<News>(tr);
-                    int i = trends.Count;
-                    if (i > 0)
-                    {
-                        activity_indicator.IsRunning = false;
-                        activity_indicator.IsVisible = false;
-                    }
-                    i = (trends.Count * heightRowsList);
-                    activity_indicator.HeightRequest = i;
+                    content = await _client.GetStringAsync(Url);
+                    Application.Current.Properties["news_content_key"] = content;
                 }
                 catch (Exception ey)
                 {
                     Crashes.TrackError(ey);
                 }
             }
+            else
+            {
+                if (Application.Current.Properties.ContainsKey("news_content_key"))
+                {
+                    try
+                    {
+                        content = Application.Current.Properties["news_content_key"].ToString();
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+            List<News> tr = JsonConvert.DeserializeObject<List<News>>(content);
+            trends = new ObservableCollection<News>(tr);
+            int i = trends.Count;
+            if (i > 0)
+            {
+                activity_indicator.IsRunning = false;
+                activity_indicator.IsVisible = false;
+            }
+            i = (trends.Count * heightRowsList);
+            activity_indicator.HeightRequest = i;
             ConvertAndShowNews();
         }
         private void ConvertAndShowNews()
