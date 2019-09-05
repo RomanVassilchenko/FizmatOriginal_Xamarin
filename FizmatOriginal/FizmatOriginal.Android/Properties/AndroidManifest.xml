@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="42" android:versionName="1.0.5" package="com.fizmatoriginal" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="43" android:versionName="1.1.0" package="com.fizmatoriginal" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="23" android:targetSdkVersion="28" />
 	<permission android:name="com.fizmatoriginal.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 	<application android:label="Fizmat Original" android:icon="@mipmap/ic_launcher">

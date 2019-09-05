@@ -13,8 +13,8 @@ namespace FizmatOriginal.Views
 
         private void Btn_exit_Clicked(object sender, System.EventArgs e)
         {
-            Application.Current.Properties["login_key"] = "";
-            Application.Current.Properties["password_key"] = "";
+            Application.Current.Properties.Remove("login_key");
+            Application.Current.Properties.Remove("password_key");
             App.Current.MainPage = new LoginPage();
         }
     }
