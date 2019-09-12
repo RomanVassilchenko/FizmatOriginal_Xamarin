@@ -19,7 +19,6 @@
                     <Button x:Name="btn_login" BackgroundColor="#A11015" TextColor="White" FontSize="25" FontAttributes="Bold" Text="Войти" Margin="0,40,0,0"/>
                 </StackLayout>
             </StackLayout>
-            <customActivityIndicator:CustomActivityIndicator IsVisible="False" x:Name="activity_indicator_loading" WidthRequest="60" HeightRequest="60" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

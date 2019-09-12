@@ -14,62 +14,24 @@ namespace FizmatOriginal.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SchedulePage : ContentPage
     {
-        private string KZURL = "https://script.google.com/macros/s/AKfycbxbCvm8IEiUue9GGIRyn3zxqrTMM4uhznB9bxpe14m7_lpuu3XF/exec";
-        private string RUURL = "https://script.google.com/macros/s/AKfycbxlGnl54weDQqW6Z6FnMLP18lVA8fCtJKKACdTegeRGR3MQOlc/exec";
-        private string APURL = "https://script.google.com/macros/s/AKfycbzuELBlcQh2vSkEv1vbCUCG60koY6PY7v4J_sa7i7iGxUJX9Yo1/exec";
-        private string PRIMURL = "https://script.google.com/macros/s/AKfycbw89p73cpC0U-PEf6-Qt28mVWxmCc1osuNyslgX47z20O4zX00/exec";
-
         private readonly int heightRowsList = 90;
         private ObservableCollection<Subject> trends = new ObservableCollection<Subject>();
 
-        public string classnumChanged = "10", classletterChanged = "D", LanguageChanged = "RU", OldLanguage = "RU";
+        public string classChanged = "10D";
         public int numChanged = 0;
 
-        private string Url = "https://script.google.com/macros/s/AKfycbxlGnl54weDQqW6Z6FnMLP18lVA8fCtJKKACdTegeRGR3MQOlc/exec";
+        private string Url = "https://script.google.com/macros/s/AKfycbw_Cf4YMALGRKny552qe9u9f86Ui7Iq7vbGDBVGoFKh2IhYH0w/exec";
+
+        private string classUrl = "https://script.google.com/macros/s/AKfycbz7ofb88NYRa-hcsyJNkOof_r5vO3qpwBSPdgeLIqXtAAK41Dw/exec";
 
         private readonly HttpClient _client = new HttpClient();
+
+        private List<string> list;
 
         public SchedulePage()
         {
             InitializeComponent();
-
-            if (!Application.Current.Properties.ContainsKey("class_key"))
-            {
-                pickerclassnum.SelectedIndex = 0;
-            }
-            else
-            {
-                try
-                {
-                    pickerclassnum.SelectedIndex = int.Parse(Application.Current.Properties["class_key"].ToString());
-                }
-                catch
-                {
-                    pickerclassnum.SelectedIndex = 0;
-                }
-            }
-            classnumChanged = (pickerclassnum.Items[pickerclassnum.SelectedIndex]).ToString();
-
-
-            if (!Application.Current.Properties.ContainsKey("letter_key"))
-            {
-                pickerclassletter.SelectedIndex = 0;
-            }
-            else
-            {
-                try
-                {
-                    pickerclassletter.SelectedIndex = int.Parse(Application.Current.Properties["letter_key"].ToString());
-                }
-                catch
-                {
-                    pickerclassletter.SelectedIndex = 0;
-                }
-            }
-            classletterChanged = (pickerclassletter.Items[pickerclassletter.SelectedIndex]).ToString();
-            LanguageUrlChange();
-
-
+            classGetList();
 
             if (!Application.Current.Properties.ContainsKey("day_key"))
             {
@@ -99,6 +61,40 @@ namespace FizmatOriginal.Views
             };
 
             OnGetList();
+        }
+
+        private async void classGetList()
+        {
+            string content = "";
+            string[] words;
+
+            GetContent get = new GetContent(classUrl);
+            content = await get.getContentAsync();
+
+            words = content.Split(new char[] { ' ' });
+            list = new List<string>(words);
+            pickerclass.ItemsSource = list;
+
+            if (list.Count > 0)
+            {
+                if (!Application.Current.Properties.ContainsKey("selected_class_key"))
+                {
+                    pickerclass.SelectedIndex = 0;
+                }
+                else
+                {
+                    try
+                    {
+                        pickerclass.SelectedIndex = int.Parse(Application.Current.Properties["selected_class_key"].ToString());
+                    }
+                    catch
+                    {
+                        pickerclass.SelectedIndex = 0;
+                    }
+                }
+                classChanged = pickerclass.Items[pickerclass.SelectedIndex];
+
+            }
         }
 
         protected async void OnGetList()
@@ -154,7 +150,7 @@ namespace FizmatOriginal.Views
             List<Subject> weekclassjson = new List<Subject>();
             foreach (Subject s in json)
             {
-                if (s.classnumber == classnumChanged + classletterChanged)
+                if (s.classnumber == classChanged)
                 {
                     if (s.weeknum == numChanged.ToString())
                     {
@@ -195,54 +191,21 @@ namespace FizmatOriginal.Views
             }
         }
 
-
-        private void Pickerclassnum_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Application.Current.Properties["class_key"] = pickerclassnum.SelectedIndex;
-            classnumChanged = (pickerclassnum.Items[pickerclassnum.SelectedIndex]).ToString();
-            LanguageUrlChange();
-            ShowSchedule();
-        }
-
-        private void Pickerclassletter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Application.Current.Properties["letter_key"] = pickerclassletter.SelectedIndex;
-            classletterChanged = (pickerclassletter.Items[pickerclassletter.SelectedIndex]).ToString();
-            LanguageUrlChange();
-            ShowSchedule();
-        }
-
         private void Pickerdayofweek_SelectedIndexChanged(object sender, EventArgs e)
         {
             Application.Current.Properties["day_key"] = pickerdayofweek.SelectedIndex;
             numChanged = WeekCheck(pickerdayofweek.Items[pickerdayofweek.SelectedIndex]);
-            LanguageUrlChange();
-            ShowSchedule();
+            ChoseClassAndDay();
         }
 
-        private void LanguageUrlChange()
+        private void Pickerclass_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LanguageChanged = LanguageCheck(classletterChanged, classnumChanged);
-            if (LanguageChanged.ToUpper() == "RU")
-            {
-                Url = RUURL;
-            }
-
-            if (LanguageChanged.ToUpper() == "KZ")
-            {
-                Url = KZURL;
-            }
-
-            if (LanguageChanged.ToUpper() == "AP")
-            {
-                Url = APURL;
-            }
-
-            if (LanguageChanged.ToUpper() == "PR")
-            {
-                Url = PRIMURL;
-            }
+            Application.Current.Properties["selected_class_key"] = pickerclass.SelectedIndex;
+            string getClass = pickerclass.Items[pickerclass.SelectedIndex].ToString();
+            classChanged = getClass;
+            ChoseClassAndDay();
         }
+
         private int WeekCheck(string day)
         {
             switch (day)
@@ -261,41 +224,6 @@ namespace FizmatOriginal.Views
                     return 6;
                 default:
                     return 1;
-            }
-        }
-
-        private string LanguageCheck(string letter, string num)
-        {
-            int n;
-            if (int.TryParse(num, out n) && n < 5)
-            {
-                return "PR";
-            }
-            //Латиница + Кирилица
-            else if (letter == "A" || letter == "А" || letter == "B" || letter == "В")
-            {
-                return "KZ";
-            }
-            else if (letter == "X" || letter == "Z")
-            {
-                return "AP";
-            }
-
-            else
-            {
-                return "RU";
-            }
-        }
-        public void ShowSchedule()
-        {
-            if (LanguageChanged != OldLanguage)
-            {
-                OldLanguage = LanguageChanged;
-                OnGetList();
-            }
-            else
-            {
-                ChoseClassAndDay();
             }
         }
 

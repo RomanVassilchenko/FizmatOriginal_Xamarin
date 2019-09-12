@@ -17,5 +17,10 @@ namespace FizmatOriginal.Views
             Application.Current.Properties.Remove("password_key");
             App.Current.MainPage = new LoginPage();
         }
+
+        private void Town_switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            Application.Current.Properties["town_switch_key"] = e.Value.ToString();
+        }
     }
 }
