@@ -68,8 +68,30 @@ namespace FizmatOriginal.Views
             string content = "";
             string[] words;
 
-            GetContent get = new GetContent(classUrl);
-            content = await get.getContentAsync();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                GetContent get = new GetContent(classUrl);
+                content = await get.getContentAsync();
+                Application.Current.Properties["class_content_key"] = content.ToString();
+            }
+            else
+            {
+                if (!Application.Current.Properties.ContainsKey("class_content_key"))
+                {
+                    content = "";
+                }
+                else
+                {
+                    try
+                    {
+                        content = (Application.Current.Properties["class_content_key"].ToString());
+                    }
+                    catch
+                    {
+                        content = "";
+                    }
+                }
+            }
 
             words = content.Split(new char[] { ' ' });
             list = new List<string>(words);
@@ -171,7 +193,8 @@ namespace FizmatOriginal.Views
                 myList.BackgroundColor = Color.FromHex("#012647");
                 if (!activity_indicator.IsVisible)
                 {
-                    lbl_bug.IsVisible = true;
+                    //TODO fix bug
+                    lbl_bug.IsVisible = false;
                 }
                 else
                 {
@@ -187,7 +210,8 @@ namespace FizmatOriginal.Views
             myList.ItemsSource = weekclassjson;
             if (weekclassjson.Count == 0)
             {
-                lbl_bug.IsVisible = true;
+                //TODO Fix Bug
+                lbl_bug.IsVisible = false;
             }
         }
 
