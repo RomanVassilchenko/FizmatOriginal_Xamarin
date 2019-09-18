@@ -34,10 +34,10 @@
 
 
     <ContentPage.Content>
-        <Grid BackgroundColor="#A11015" HorizontalOptions="Center">
+        <Grid BackgroundColor="#A11015" HorizontalOptions="FillAndExpand">
             <Grid>
                 <!-- ListView-->
-                <ListView x:Name="myList" HasUnevenRows="true" SeparatorColor="#000000" BackgroundColor="Black" >
+                <ListView  IsPullToRefreshEnabled="True" x:Name="myList" HasUnevenRows="true" SeparatorColor="#000000" BackgroundColor="Black" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -47,9 +47,9 @@
                                             <ColumnDefinition Width="AUTO"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="0">
-                                            <Frame HeightRequest="27" WidthRequest="27" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0" BackgroundColor="Maroon">
-                                                <Label Text="{Binding number}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Grid.Column="0">
+                                            <Frame HeightRequest="27" WidthRequest="27" CornerRadius="20" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="0" Padding="0" BackgroundColor="Maroon">
+                                                <Label Text="{Binding number}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                                             </Frame>
                                             <Label TextColor="#FFFFFF" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="10" Text="{Binding times}"/>
                                         </StackLayout>

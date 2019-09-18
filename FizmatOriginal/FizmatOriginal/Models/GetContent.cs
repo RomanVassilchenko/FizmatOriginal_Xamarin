@@ -1,9 +1,7 @@
 ﻿using Microsoft.AppCenter.Crashes;
 using Plugin.Connectivity;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 
 namespace FizmatOriginal.Models
 {

@@ -11,7 +11,7 @@
         <Label Text="Настройки" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" FontAttributes="Bold" FontSize="Large"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <Grid BackgroundColor="#012647">
+        <Grid BackgroundColor="#002e56">
             <StackLayout>
                 <Label HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Margin="10" Text="Пока доступно только РФМШ Астаны" TextColor="White" FontSize="Medium" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" >

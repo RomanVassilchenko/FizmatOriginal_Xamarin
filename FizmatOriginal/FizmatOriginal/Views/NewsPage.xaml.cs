@@ -37,6 +37,13 @@ namespace FizmatOriginal.Views
                 WebPage webPage = new WebPage(selectedurl);
                 await Navigation.PushModalAsync(webPage);
             };
+
+            myList.RefreshCommand = new Command(() =>
+            {
+                OnGetList();
+                myList.IsRefreshing = false;
+            });
+
             OnGetList();
         }
 

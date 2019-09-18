@@ -8,7 +8,7 @@
              x:Class="FizmatOriginal.Views.NewsPage">
     <ContentPage.Content>
         <Grid>
-            <ListView x:Name="myList" HasUnevenRows="true" SeparatorVisibility="None" BackgroundColor="#012647">
+            <ListView  IsPullToRefreshEnabled="True" x:Name="myList" HasUnevenRows="true" SeparatorVisibility="None" BackgroundColor="#012647">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
