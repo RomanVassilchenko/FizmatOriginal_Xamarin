@@ -1,12 +1,10 @@
 ﻿using FizmatOriginal.Models;
 using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json;
-using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net.Http;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,73 +19,44 @@ namespace FizmatOriginal.Views
 
 
         private string Url = "https://script.google.com/macros/s/AKfycbwVtdW3WNTkWaYh7wjNZqRv2zK0Ix-vRgm4uwPAfpzEmwpElWcc/exec";
-        private bool isLoaded = false;
         private string classUrl = "https://script.google.com/macros/s/AKfycbz7ofb88NYRa-hcsyJNkOof_r5vO3qpwBSPdgeLIqXtAAK41Dw/exec";
-        private string content;
-        private readonly HttpClient _client = new HttpClient();
-
+        private bool isLoaded = false;
         public LoginPage()
         {
             InitializeComponent();
+
             btn_login.TextColor = Color.Gray;
             activity_indicator.IsRunning = true;
+
             passwordLoading();
 
-            if (!Application.Current.Properties.ContainsKey("login_key"))
-            {
-                entry_login.Text = "";
-            }
-            else
-            {
-                try
-                {
-                    entry_login.Text = Application.Current.Properties["login_key"].ToString();
-                }
-                catch
-                {
-                    entry_login.Text = "";
-                }
-            }
+            GetTextFromKey LogintextFromKey = new GetTextFromKey("login_key");
+            entry_login.Text = LogintextFromKey.GetText();
 
-            if (!Application.Current.Properties.ContainsKey("password_key"))
-            {
-                entry_login.Text = "";
-            }
-            else
-            {
-                try
-                {
-                    entry_password.Text = Application.Current.Properties["password_key"].ToString();
-                }
-                catch
-                {
-                    entry_password.Text = "";
-                }
-            }
+            GetTextFromKey PasswordtextFromKey = new GetTextFromKey("password_key");
+            entry_password.Text = PasswordtextFromKey.GetText();
 
             btn_login.Clicked += (sender, args) => passwordCheck();
         }
 
         private async void passwordLoading()
         {
-            if (CrossConnectivity.Current.IsConnected)
+            try
             {
-                try
+                GetContent get = new GetContent(Url, "login_content_key");
+                string content = await get.getContentAsync();
+                List<Access> tr = JsonConvert.DeserializeObject<List<Access>>(content);
+                trends = new ObservableCollection<Access>(tr);
+                int i = trends.Count;
+                if (i > 0)
                 {
-                    content = await _client.GetStringAsync(Url);
-                    List<Access> tr = JsonConvert.DeserializeObject<List<Access>>(content);
-                    trends = new ObservableCollection<Access>(tr);
-                    int i = trends.Count;
-                    if (i > 0)
-                    {
-                        isLoaded = true;
-                        btn_login.TextColor = Color.White;
-                    }
+                    isLoaded = true;
+                    btn_login.TextColor = Color.White;
                 }
-                catch (Exception ey)
-                {
-                    Crashes.TrackError(ey);
-                }
+            }
+            catch (Exception ey)
+            {
+                Crashes.TrackError(ey);
             }
         }
         public async void passwordCheck()
@@ -95,6 +64,7 @@ namespace FizmatOriginal.Views
             if (!isLoaded)
             {
                 await DisplayAlert("Слабый интернет или нет сигнала", "Попробуйте еще раз", "Ок");
+                passwordLoading();
             }
 
             List<Access> json = new List<Access>(trends);
@@ -113,7 +83,8 @@ namespace FizmatOriginal.Views
                         var a = s.login;
                         if (a.Contains('_'))
                         {
-                            GetContent get = new GetContent(classUrl);
+                            string content = "";
+                            GetContent get = new GetContent(classUrl, "class_list_content_key");
                             content = await get.getContentAsync();
 
                             string[] words = a.Split(new char[] { '_' });

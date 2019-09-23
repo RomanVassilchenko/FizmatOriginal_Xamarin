@@ -31,23 +31,15 @@ namespace FizmatOriginal.Views
         public SchedulePage()
         {
             InitializeComponent();
+
+            GetTownUrl get = new GetTownUrl();
+            Url = get.GetScheduleUrl();
+            classUrl = get.GetClassUrl();
+
             classGetList();
 
-            if (!Application.Current.Properties.ContainsKey("day_key"))
-            {
-                pickerdayofweek.SelectedIndex = 0;
-            }
-            else
-            {
-                try
-                {
-                    pickerdayofweek.SelectedIndex = int.Parse(Application.Current.Properties["day_key"].ToString());
-                }
-                catch
-                {
-                    pickerdayofweek.SelectedIndex = 0;
-                }
-            }
+            GetTextFromKey SchedulegetTextFromKey = new GetTextFromKey("day_key");
+            pickerdayofweek.SelectedIndex = (SchedulegetTextFromKey.GetText() == "") ? 0 : int.Parse(SchedulegetTextFromKey.GetText());
             numChanged = WeekCheck(pickerdayofweek.Items[pickerdayofweek.SelectedIndex]);
 
 
@@ -68,30 +60,8 @@ namespace FizmatOriginal.Views
             string content = "";
             string[] words;
 
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                GetContent get = new GetContent(classUrl);
-                content = await get.getContentAsync();
-                Application.Current.Properties["class_content_key"] = content.ToString();
-            }
-            else
-            {
-                if (!Application.Current.Properties.ContainsKey("class_content_key"))
-                {
-                    content = "";
-                }
-                else
-                {
-                    try
-                    {
-                        content = (Application.Current.Properties["class_content_key"].ToString());
-                    }
-                    catch
-                    {
-                        content = "";
-                    }
-                }
-            }
+            GetContent get = new GetContent(classUrl, "class_content_key");
+            content = await get.getContentAsync();
 
             words = content.Split(new char[] { ' ' });
             list = new List<string>(words);
@@ -99,21 +69,8 @@ namespace FizmatOriginal.Views
 
             if (list.Count > 0)
             {
-                if (!Application.Current.Properties.ContainsKey("selected_class_key"))
-                {
-                    pickerclass.SelectedIndex = 0;
-                }
-                else
-                {
-                    try
-                    {
-                        pickerclass.SelectedIndex = int.Parse(Application.Current.Properties["selected_class_key"].ToString());
-                    }
-                    catch
-                    {
-                        pickerclass.SelectedIndex = 0;
-                    }
-                }
+                GetTextFromKey SchedulegetTextFromKey = new GetTextFromKey("selected_class_key");
+                pickerclass.SelectedIndex = (SchedulegetTextFromKey.GetText() == "") ? 0 : int.Parse(SchedulegetTextFromKey.GetText());
                 classChanged = pickerclass.Items[pickerclass.SelectedIndex];
 
             }

@@ -16,15 +16,16 @@ namespace FizmatOriginal.Views
     public partial class NewsPage : ContentPage
     {
         private string selectedurl = "";
-        private readonly int heightRowsList = 90;
+        private int heightRowsList = 90;
         private ObservableCollection<News> trends = new ObservableCollection<News>();
 
-        private readonly string Url = "https://script.google.com/macros/s/AKfycbyvUKlW6NujurXJ6xtQP88fFSn0pczYjg0IBaTxFgcHirwNmIKa/exec";
-        private readonly HttpClient _client = new HttpClient();
+        private string Url = "https://script.google.com/macros/s/AKfycbyvUKlW6NujurXJ6xtQP88fFSn0pczYjg0IBaTxFgcHirwNmIKa/exec";
+        private HttpClient _client = new HttpClient();
 
         public NewsPage()
         {
             InitializeComponent();
+
             NavigationPage.SetHasNavigationBar(this, false);
             myList.ItemTapped += async (object sender, ItemTappedEventArgs e) =>
             {
@@ -49,6 +50,10 @@ namespace FizmatOriginal.Views
 
         protected async void OnGetList()
         {
+
+            GetTownUrl get = new GetTownUrl();
+            Url = get.GetNewsUrl();
+
             string content = "";
 
             activity_indicator.IsRunning = true;
@@ -68,17 +73,8 @@ namespace FizmatOriginal.Views
             }
             else
             {
-                if (Application.Current.Properties.ContainsKey("news_content_key"))
-                {
-                    try
-                    {
-                        content = Application.Current.Properties["news_content_key"].ToString();
-                    }
-                    catch
-                    {
-
-                    }
-                }
+                GetTextFromKey NewsgetTextFromKey = new GetTextFromKey("news_content_key");
+                content = NewsgetTextFromKey.GetText();
             }
             List<News> tr = JsonConvert.DeserializeObject<List<News>>(content);
             trends = new ObservableCollection<News>(tr);
