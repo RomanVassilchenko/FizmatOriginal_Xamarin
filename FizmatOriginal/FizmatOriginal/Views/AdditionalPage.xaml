@@ -13,8 +13,7 @@
     <ContentPage.Content>
         <Grid BackgroundColor="#002e56">
             <StackLayout>
-                <Label HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Margin="10" Text="Пока доступно только РФМШ Астаны" TextColor="White" FontSize="Medium" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" >
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
                     <Label FontSize="Medium" Text="Fizmat Astana" TextColor="White" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center"/>
                     <Switch x:Name="town_switch" Toggled="Town_switch_Toggled" HorizontalOptions="CenterAndExpand" OnColor="#A11015" IsToggled="False"/>
                     <Label FontSize="Medium" Text="Fizmat Almaty" TextColor="White" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center"/>
