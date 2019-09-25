@@ -37,7 +37,7 @@
         <Grid BackgroundColor="#A11015" HorizontalOptions="FillAndExpand">
             <Grid>
                 <!-- ListView-->
-                <ListView  IsPullToRefreshEnabled="True" x:Name="myList" HasUnevenRows="true" SeparatorColor="#000000" BackgroundColor="Black" >
+                <ListView  x:Name="myList" HasUnevenRows="true" SeparatorColor="#000000" BackgroundColor="Black" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
