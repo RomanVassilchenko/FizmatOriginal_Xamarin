@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="FizmatOriginal.Views.SettingsPage">
+    <NavigationPage.TitleView>
+        <Label Text="Настройки" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" FontAttributes="Bold" FontSize="Large" />
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid BackgroundColor="#002e56">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label FontSize="Medium" Text="Fizmat Astana" TextColor="White" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                    <Switch x:Name="town_switch" Toggled="Town_switch_Toggled" HorizontalOptions="CenterAndExpand" OnColor="#A11015" IsToggled="False" />
+                    <Label FontSize="Medium" Text="Fizmat Almaty" TextColor="White" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" />
+                </StackLayout>
+            </StackLayout>
+            <Button Text="Выйти" FontSize="Medium" FontAttributes="Bold" x:Name="btn_exit" TextColor="White" Clicked="Btn_exit_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" BackgroundColor="#A11015" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
