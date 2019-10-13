@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using FizmatOriginal.Models;
 using FizmatOriginal.ViewModels;
 using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json;
-using Plugin.Connectivity;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,14 +21,13 @@ namespace FizmatOriginal.Views
         private ObservableCollection<News> trends = new ObservableCollection<News>();
 
         private string Url = "https://script.google.com/macros/s/AKfycbyvUKlW6NujurXJ6xtQP88fFSn0pczYjg0IBaTxFgcHirwNmIKa/exec";
-        private HttpClient _client = new HttpClient();
 
 
         public NewsPage()
         {
             InitializeComponent();
 
-            myList.ItemTapped += async (object sender, ItemTappedEventArgs e) =>
+            myList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
                 News data = (News)e.Item;
                 selectedurl = data.url;
@@ -37,61 +36,41 @@ namespace FizmatOriginal.Views
                     return;
                 } ((ListView)sender).SelectedItem = null;
                 WebPage webPage = new WebPage(selectedurl);
-                await Navigation.PushAsync(webPage);
+                _ = ShowNews(webPage);
             };
 
             myList.RefreshCommand = new Command(() =>
             {
-                OnGetList();
+                _ = OnGetListAsync();
                 myList.IsRefreshing = false;
             });
+        }
 
-            //OnGetList();
+        private async Task ShowNews(WebPage webPage)
+        {
+            await Navigation.PushAsync(webPage);
         }
 
         private bool _appeared;
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            // To avoid repeating loading it. Remove if you want to refresh every time.
             if (!_appeared)
             {
-                // Load from here
-                OnGetList();
-
+                _ = OnGetListAsync();
                 _appeared = true;
             }
         }
 
-        protected async void OnGetList()
+        protected async System.Threading.Tasks.Task OnGetListAsync()
         {
 
             GetUrl get = new GetUrl();
             Url = get.GetNewsUrl();
-
-            string content = "";
-
             activity_indicator.IsRunning = true;
             activity_indicator.IsVisible = true;
-
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                try
-                {
-                    content = await _client.GetStringAsync(Url);
-                    Application.Current.Properties["news_content_key"] = content;
-                }
-                catch (Exception ey)
-                {
-                    Crashes.TrackError(ey);
-                }
-            }
-            else
-            {
-                GetStringFromKey NewsgetTextFromKey = new GetStringFromKey("news_content_key");
-                content = NewsgetTextFromKey.GetText();
-            }
+            GetContent getContent = new GetContent(Url, "news_content_key");
+            string content = await getContent.GetContentAsync();
             List<News> tr = JsonConvert.DeserializeObject<List<News>>(content);
             trends = new ObservableCollection<News>(tr);
             int i = trends.Count;

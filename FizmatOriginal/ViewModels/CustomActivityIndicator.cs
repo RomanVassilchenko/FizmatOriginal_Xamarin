@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace FizmatOriginal.ViewModels
 {
@@ -50,13 +51,13 @@ namespace FizmatOriginal.ViewModels
                 }
                 else
                 {
-                    StopAnimation();
+                    _ = StopAnimationAsync();
                 }
             }
 
             if (propertyName == nameof(IsEnabled) && !IsEnabled && IsRunning)
             {
-                StopAnimation();
+                _ = StopAnimationAsync();
             }
 
             if (propertyName == nameof(Source))
@@ -85,9 +86,9 @@ namespace FizmatOriginal.ViewModels
                 (v, c) => Rotation = 0, () => true);
         }
 
-        private async void StopAnimation()
+        private async Task StopAnimationAsync()
         {
-            await this.ScaleTo(0, 500);
+            _ = await this.ScaleTo(0, 500);
             this.AbortAnimation(AnimationName);
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Microsoft.AppCenter.Crashes;
 using Plugin.Connectivity;
 using Xamarin.Forms;
@@ -22,7 +23,7 @@ namespace FizmatOriginal.ViewModels
             this.key = key;
         }
 
-        public async System.Threading.Tasks.Task<string> GetContentAsync()
+        public async Task<string> GetContentAsync()
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -43,17 +44,8 @@ namespace FizmatOriginal.ViewModels
             {
                 if (key != "")
                 {
-                    if (Application.Current.Properties.ContainsKey(key))
-                    {
-                        try
-                        {
-                            content = Application.Current.Properties[key].ToString();
-                        }
-                        catch
-                        {
-                            content = "";
-                        }
-                    }
+                    GetStringFromKey NewsgetTextFromKey = new GetStringFromKey(key);
+                    content = NewsgetTextFromKey.GetText();
                 }
             }
             return content;

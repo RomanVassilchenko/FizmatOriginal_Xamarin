@@ -1,10 +1,8 @@
-﻿using System;
-using Xamarin.UITest;
-using Xamarin.UITest.Queries;
+﻿using Xamarin.UITest;
 
 namespace FizmatOriginal.UITests
 {
-    public class AppInitializer
+    public static class AppInitializer
     {
         public static IApp StartApp(Platform platform)
         {

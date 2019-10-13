@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -29,7 +29,7 @@ namespace FizmatOriginal.Views
             btn_login.TextColor = Color.Gray;
             activity_indicator.IsRunning = true;
 
-            PasswordLoading();
+            _ = PasswordLoadingAsync();
 
             GetStringFromKey LogintextFromKey = new GetStringFromKey("login_key");
             entry_login.Text = LogintextFromKey.GetText();
@@ -37,10 +37,10 @@ namespace FizmatOriginal.Views
             GetStringFromKey PasswordtextFromKey = new GetStringFromKey("password_key");
             entry_password.Text = PasswordtextFromKey.GetText();
 
-            btn_login.Clicked += (sender, args) => PasswordCheck();
+            btn_login.Clicked += (sender, args) => _ = PasswordCheckAsync();
         }
 
-        private async void PasswordLoading()
+        public async Task PasswordLoadingAsync()
         {
             try
             {
@@ -60,12 +60,12 @@ namespace FizmatOriginal.Views
                 Crashes.TrackError(ey);
             }
         }
-        public async void PasswordCheck()
+        public async Task PasswordCheckAsync()
         {
             if (!isLoaded)
             {
                 await DisplayAlert("Слабый интернет или нет сигнала", "Попробуйте еще раз", "Ок");
-                PasswordLoading();
+                _ = PasswordLoadingAsync();
             }
 
             List<Access> json = new List<Access>(trends);

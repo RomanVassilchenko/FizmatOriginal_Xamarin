@@ -4,8 +4,8 @@ namespace FizmatOriginal.ViewModels
 {
     class GetUrl
     {
-        private readonly string NewsUrlAstana = "https://script.google.com/macros/s/AKfycbyvUKlW6NujurXJ6xtQP88fFSn0pczYjg0IBaTxFgcHirwNmIKa/exec";
-        private readonly string NewsUrlAlmaty = "https://script.google.com/macros/s/AKfycbwwWBUoom9JG_gTuMn3EYsLj2VQ4yUdqSFpLLKtf9dtmfjyyyg/exec";
+        private readonly string NewsUrlAstana = "https://script.google.com/macros/s/AKfycbzkpgPRlnZ18dMC8WlxSeSrlwNIwAo0nwAEr29XYbJHvbQFNMY/exec";
+        private readonly string NewsUrlAlmaty = "https://script.google.com/macros/s/AKfycbwo-6hqRECSavZbMGF7IhZo2OaHxqWwXGNJ53mWTPUVOophRuM/exec";
 
         private readonly string ScheduleUrlAstana = "https://script.google.com/macros/s/AKfycbw_Cf4YMALGRKny552qe9u9f86Ui7Iq7vbGDBVGoFKh2IhYH0w/exec";
         private readonly string ScheduleUrlAlmaty = "https://script.google.com/macros/s/AKfycbzesPBio7ZS5Xvq1h5nj944Y_yalE3gLcJw5ihF21XYyPg3YA1X/exec";

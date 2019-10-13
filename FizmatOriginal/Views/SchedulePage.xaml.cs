@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
+using System.Threading.Tasks;
 using FizmatOriginal.Models;
 using FizmatOriginal.ViewModels;
 using Newtonsoft.Json;
@@ -35,7 +36,7 @@ namespace FizmatOriginal.Views
             Url = get.GetScheduleUrl();
             classUrl = get.GetClassUrl();
 
-            classGetList();
+            _ = ClassGetListAsync();
 
             GetStringFromKey SchedulegetTextFromKey = new GetStringFromKey("day_key");
             pickerdayofweek.SelectedIndex = (SchedulegetTextFromKey.GetText() == "") ? 0 : int.Parse(SchedulegetTextFromKey.GetText());
@@ -51,16 +52,15 @@ namespace FizmatOriginal.Views
                 } ((ListView)sender).SelectedItem = null;
             };
 
-            OnGetList();
+            _ = OnGetListAsync();
         }
 
-        private async void classGetList()
+        private async Task ClassGetListAsync()
         {
-            string content = "";
             string[] words;
 
             GetContent get = new GetContent(classUrl, "class_content_key");
-            content = await get.GetContentAsync();
+            string content = await get.GetContentAsync();
 
             words = content.Split(new char[] { ' ' });
             list = new List<string>(words);
@@ -75,14 +75,13 @@ namespace FizmatOriginal.Views
             }
         }
 
-        protected async void OnGetList()
+        protected async Task OnGetListAsync()
         {
-            string content = "";
             activity_indicator.IsRunning = true;
             activity_indicator.IsVisible = true;
 
             GetContent getContent = new GetContent(Url, "schedule_content_key");
-            content = await getContent.GetContentAsync();
+            string content = await getContent.GetContentAsync();
 
             List<Subject> tr = JsonConvert.DeserializeObject<List<Subject>>(content);
             trends = new ObservableCollection<Subject>(tr);
